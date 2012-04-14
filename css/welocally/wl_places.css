@@ -1,0 +1,126 @@
+/* jquery overrides  */
+.ui-dialog {  }
+.ui-dialog-titlebar{  }
+
+/* jqueryui overrides */
+#feedback { font-size: 1.0em; }
+
+/* status */
+.wl_update { 
+	text-align:center; 
+	margin-bottom:10px; border: 1px solid #aaaaaa; 
+	background-color: #BFDFFF;
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;
+   	color: #415E7A; 
+ }
+.wl_error {  
+	text-align:center; 
+	background-color: #FFBFBF;
+	margin-bottom:10px; border: 1px solid #9E2626; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px; 
+   	color: #9E2626;
+}
+.wl_error a{  
+   	color: #9E2626;
+}
+
+.wl_warning {  
+	text-align:center; 
+	background-color: #FFF3BF; 
+	margin-bottom:10px; border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px; 
+   	color: #A68F2B;
+ }
+ 
+.wl_message {
+	text-align:center; 
+	margin: 5px auto;  
+	width:98%;
+	background-color: #DBDBDB;
+	margin-bottom:10px; border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;  
+   	color: #444444;
+}
+
+.wl_clear {
+	clear:both;
+}
+
+.wl_ajax_loading { width: 32px; height:32px; }
+
+.wl_widget_field {  width:100%; margin-bottom:10px;  }
+
+
+#welocally_deals_widget {
+    width:295px;
+    height:100px;   
+    margin:10px auto;
+    font-size: 1.0em;
+    -webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px; 
+   	background: #F0E8CE;
+   	border:1px solid #9C744C;   	
+}
+
+.wl_deal_location { font-size: 0.8em; }
+.wl_deal_summary { font-size: 0.9em; }
+
+
+ 
+#wl_deals_slides {
+    overflow:hidden;
+    /* fix ie overflow issue */
+    position:relative;
+    width:290px;
+    height:90px;
+    
+}
+ 
+/* remove the list styles, width : item width * total items */ 
+#wl_deals_slides ul {
+    position:relative;
+    left:0;
+    top:0;
+    list-style:none;
+    margin:0;
+    padding:0;  
+    width:750px;            
+}
+ 
+/* width of the item, in this case I put 250x250x gif */
+#wl_deals_slides li {
+    width:290px;
+    height:90px;   
+    float:left;
+}
+
+ 
+#wl_deals_slides li img {
+    padding:5px;
+    float:left;
+}
+ 
+.clear {clear:both}
+
+
+.wl_category_container_tag_empty{ display: none }
+
+.wl_place_widget_script{display:none}
+
+.wl_field_title {font-size: 1.2em; font-weight: bold;}
+.wl_field_description {font-size: 1.0em; font-style: italic; color: #888888; }
+
+

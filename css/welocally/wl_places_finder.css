@@ -1,0 +1,54 @@
+.wl_placefinder_wrapper {
+	width: 98%;
+	margin: 5px auto;
+	text-align:center;   
+	background-color: #f2f2f2;
+	margin-bottom:10px; border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;  
+   	color: #444444;
+}
+
+.wl_placefinder_wrapper input{ 
+	width: 98%; margin-bottom:10px; border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;   
+   	text-align: center;}
+
+.wl_finder_search_button_area{ width:100%; margin-bottom:5px; text-align:center; } 
+#wl_finder_search_button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 6px 12px;
+   -webkit-border-radius: 17px;
+   -moz-border-radius: 17px;
+   border-radius: 17px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 20px;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+#wl_finder_search_button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+#wl_finder_search_button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   } 
+
+ 

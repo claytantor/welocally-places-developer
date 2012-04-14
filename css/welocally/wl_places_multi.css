@@ -1,0 +1,175 @@
+
+.wl_places_multi_widget{
+	width: 98%;
+}
+
+.wl_places_multi_selected {
+	border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px; 
+	width: 100%;	
+	background: #ffffff;
+}
+
+.wl_places_place_wrapper{margin: 5px;}
+
+.wl_places_multi_map_canvas {
+	width: 100%;
+	margin:5px auto;
+	height: 340px;
+	border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px; 
+}
+
+.wl_places_multi_map_canvas img {
+	max-width: none;
+}
+
+#wl_places_mutli_selectable { 
+	list-style-type: none; margin: 0; padding: 0; display: inline; 
+}
+#wl_places_mutli_selectable .ui-selecting { background: #FEFEFE; }
+#wl_places_mutli_selectable .ui-selected { background: #e2e2e2;  }
+#wl_places_mutli_selectable ol {  display: inline; }
+#wl_places_mutli_selectable li { 
+	margin-right: 3px; 
+	margin-bottom: 3px; 
+	text-align:left;
+	padding: 0.4em; 
+	font-size: 0.8em; 
+	border: 1px solid #aaaaaa; 
+	display: inline-block; 	
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px; 
+   	background: #FEFEFE;
+	/*cursor: pointer;*/
+   	cursor: pointer;
+   	}
+
+.wl_selected_tag { 
+	color: #999999;
+	border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px; 
+   	font-size: 0.8em; font-family: Fixed, monospace; font-weight:bold; text-align:center; margin-top:5px; }
+   	
+.wl_places_multi {  
+	padding: 10px;
+	margin-bottom:10px; border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px; 
+   	background: #fafafa;
+}
+.wl_places_multi_tag {  width:100%; padding: 4px; }
+.wl_places_multi_tag input{ 
+	margin-bottom: 5px;
+	border: 1px solid #9c9c9c;
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;
+   	color: #7d7d7d;
+   	font-weight:bold;
+   	text-align:left;
+	width:95%; 
+	font-weight:bold;
+	font-size: 1.0em;
+	font-family: Fixed, monospace;	
+}
+
+.wl_places_multi_script { width:100%; padding: 4px; }
+.wl_places_multi_script textarea{ 
+	border: 1px solid #9c9c9c;
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;
+   	color: #7d7d7d;
+   	font-weight:bold;
+   	text-align:left;
+	width:95%; 
+	height:90px;
+	font-weight:bold;
+	font-size: 1.0em;
+	font-family: Fixed, monospace;  }
+
+.wl_places_multi_name { 
+	font-size: 1.4em;
+	font-weight:bold;
+	color: #444444; }
+	
+.wl_places_multi_web_link { 
+	background: url(../images/link_web_bg.png);
+	text-align: left;  
+	display: inline-block; 
+	width:120px; 
+	height:32px; 
+	margin-right: 20px; }
+	
+.wl_places_multi_web_link a { 
+	margin-left: 35px; }
+	
+.wl_places_multi_driving_link { 
+	background: url(../images/link_driving_bg.png);
+	text-align: left; 
+	display: inline-block; 
+	width:120px; height:32px; 
+	margin-right: 15px; }
+
+.wl_places_multi_driving_link a { 
+	margin-left: 35px; }
+
+	
+.wl_places_multi_embed_link { 
+	background: url(../images/link_bg.png);
+	text-align: left; 
+	display: inline-block; 
+	width:120px; height:32px; 
+	margin-right: 15px; }	
+	
+.wl_places_multi_embed_link a { 
+	margin-left: 35px; }
+
+.wl_places_multi_share_link { 
+	background: url(../images/link_share_bg.png);
+	text-align: left; 
+	display: inline-block; 
+	width:120px; height:32px; 
+	margin-right: 15px; }	
+	
+.wl_places_multi_share_link a { 
+	margin-left: 35px; }
+
+.wl_places_multi_post_link { 
+	background: url(../images/link_post_bg.png);
+	text-align: left; 
+	display: inline-block; 
+	width:120px; height:32px; 
+	margin-right: 15px; }	
+	
+.wl_places_multi_post_link a { 
+	margin-left: 35px; }
+ 
+.wl_places_multi_infobox { 
+	font-size: 0.8em;
+	list-style-type:none; 
+	background: #f2f2f2; padding:5px;
+	border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;  
+ }
+.wl_places_multi_infobox li { 
+	list-style-type:none; 
+	width: 160px; 
+ }
+ 
+ .wl_selectable_marker { float: left }
+ 
+ 
