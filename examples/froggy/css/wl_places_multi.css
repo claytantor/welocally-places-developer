@@ -99,64 +99,7 @@
 	font-weight:bold;
 	font-size: 1.0em;
 	font-family: Fixed, monospace;  }
-
-.wl_places_multi_name { 
-	font-size: 1.4em;
-	font-weight:bold;
-	color: #444444; }
 	
-.wl_places_multi_web_link { 
-	background: url(../images/link_web_bg.png);
-	text-align: left;  
-	display: inline-block; 
-	width:120px; 
-	height:32px; 
-	margin-right: 20px; }
-	
-.wl_places_multi_web_link a { 
-	margin-left: 35px; }
-	
-.wl_places_multi_driving_link { 
-	background: url(../images/link_driving_bg.png);
-	text-align: left; 
-	display: inline-block; 
-	width:120px; height:32px; 
-	margin-right: 15px; }
-
-.wl_places_multi_driving_link a { 
-	margin-left: 35px; }
-
-	
-.wl_places_multi_embed_link { 
-	background: url(../images/link_bg.png);
-	text-align: left; 
-	display: inline-block; 
-	width:120px; height:32px; 
-	margin-right: 15px; }	
-	
-.wl_places_multi_embed_link a { 
-	margin-left: 35px; }
-
-.wl_places_multi_share_link { 
-	background: url(../images/link_share_bg.png);
-	text-align: left; 
-	display: inline-block; 
-	width:120px; height:32px; 
-	margin-right: 15px; }	
-	
-.wl_places_multi_share_link a { 
-	margin-left: 35px; }
-
-.wl_places_multi_post_link { 
-	background: url(../images/link_post_bg.png);
-	text-align: left; 
-	display: inline-block; 
-	width:120px; height:32px; 
-	margin-right: 15px; }	
-	
-.wl_places_multi_post_link a { 
-	margin-left: 35px; }
- 
 .wl_places_multi_infobox { 
 	font-size: 0.8em;
 	color: #586B49;
@@ -172,7 +115,6 @@
 	width: 160px; 
 	color: 586B49;
  }
- 
  .wl_selectable_marker { float: left }
  
  .selectable_title{ 

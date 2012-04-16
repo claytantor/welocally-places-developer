@@ -2,7 +2,9 @@
 .wl_places_place_wrapper{
 }
 
+/* overall style for the widget */
 .welocally_place_widget { 
+	color: #666;
 	font-size: 0.8em;
 	margin-bottom: 20px; 
 	width: 98%; 
@@ -10,7 +12,7 @@
    	-moz-border-radius: 4px;
    	border-radius: 4px; 
    	background: #f2f2f2;
-   	border:1px solid #999999;
+   	border:1px solid #999;
    	padding:5px; }
    	
 .wl_places_place {  
@@ -21,6 +23,7 @@
    	border-radius: 4px; 
    	background: #fafafa;
 }
+
 .wl_places_place_tag {  width:100%; padding: 4px; }
 .wl_places_place_tag input{ 
 	margin-bottom: 5px;
@@ -56,16 +59,20 @@
 
 .wl_places_place_name { 
 	font-size: 1.4em;
-	font-weight:bold;
-	color: #444444; }
+	font-weight:bold;}
 	
 .wl_places_place_adress {
 	font-size: 1.0em;
 	font-weight:bold;
-	color: #444444;
+	color: #aaa; 
+}
+
+.wl_places_place_phone {
+	color: #aaa;
 }
 	
 	
+/* where you styling of links */	
 .wl_places_place_web_link { 
 	background: url(../images/grey_web.png);
 	text-align: left;  
@@ -74,10 +81,16 @@
 	margin-right: 15px; }
 	
 .wl_places_place_web_link a { 
-	margin-left: 22px; 
-	position: relative;
-	top: 5px;
+    color: #888; 
+    margin-left: 22px; 
+    position: relative;
+    top: 5px; }
+	
+.wl_places_place_web_link a:hover { 
+	color: #68AAE3;
 	}
+	
+
 	
 .wl_places_place_driving_link { 
 	background: url(../images/grey_driving.png);
@@ -87,12 +100,17 @@
 	margin-right: 15px; }
 
 .wl_places_place_driving_link a { 
+	color: #888888;
 	margin-left: 22px; 
 	position: relative;
 	top: 5px;
 	}
 
+.wl_places_place_driving_link a:hover { 
+	color: #68AAE3;
+	}
 	
+		
 .wl_places_place_embed_link { 
 	background: url(../images/grey_share.png);
 	text-align: left; 
@@ -101,11 +119,17 @@
 	margin-right: 15px; }	
 	
 .wl_places_place_embed_link a { 
+	color: #888888;
 	margin-left: 22px; 
 	position: relative;
 	top: 5px;
 }
 
+.wl_places_place_driving_link a:hover { 
+	color: #68AAE3;
+	}
+	
+	
 .wl_places_place_share_link { 
 	background: url(../images/grey_share.png);
 	text-align: left; 
@@ -114,12 +138,17 @@
 	margin-right: 15px; }	
 	
 .wl_places_place_share_link a { 
+	color: #888888;
 	margin-left: 22px; 
 	position: relative;
 	top: 5px;
 	}
 
-
+.wl_places_place_share_link a:hover { 
+	color: #68AAE3;
+	}
+	
+	
 .wl_places_place_post_link { 
 	background: url(../images/link_post_bg.png);
 	text-align: left; 
@@ -128,13 +157,17 @@
 	margin-right: 15px; }	
 	
 .wl_places_place_post_link a { 
+	color: #888888;
 	margin-left: 22px; 
 	position: relative;
 	top: 5px;
 	}
 	
-
-
+.wl_places_place_post_link a:hover { 
+	color: #68AAE3;
+	}
+	
+/* where you set the map size */
 .wl_places_place_map_canvas {height: 320px; width: 100%}
 
 .wl_places_place_map_canvas img {

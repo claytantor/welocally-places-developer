@@ -10,6 +10,7 @@
 
 /* status */
 .wl_update { 
+	font-size:0.8em;
 	text-align:center; 
 	margin-bottom:10px; border: 1px solid #aaaaaa; 
 	background-color: #BFDFFF;
@@ -20,6 +21,7 @@
    	color: #415E7A; 
  }
 .wl_error {  
+	font-size:0.8em;
 	text-align:center; 
 	background-color: #FFBFBF;
 	margin-bottom:10px; border: 1px solid #9E2626; 
@@ -35,9 +37,10 @@
 
 
 .wl_warning {  
+	font-size:0.8em;
 	text-align:center; 
 	background-color: #FFF3BF; 
-	margin-bottom:10px; border: 1px solid #aaaaaa; 
+	margin-bottom:10px; border: 1px solid #A68F2B; 
 	-webkit-border-radius: 4px;
    	-moz-border-radius: 4px;
    	border-radius: 4px;
@@ -46,16 +49,17 @@
  }
  
 .wl_message {
+	font-size:0.8em;
 	text-align:center; 
 	margin: 5px auto;  
 	width:98%;
-	background-color: #DBDBDB;
+	background-color: #E0D5A2;
 	margin-bottom:10px; border: 1px solid #aaaaaa; 
 	-webkit-border-radius: 4px;
    	-moz-border-radius: 4px;
    	border-radius: 4px;
    	padding: 4px;  
-   	color: #444444;
+   	color: #B0A254;
 }
 
 .wl_clear {

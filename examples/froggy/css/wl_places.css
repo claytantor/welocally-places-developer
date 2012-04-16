@@ -7,6 +7,7 @@
 
 /* status */
 .wl_update { 
+	font-size:0.8em;
 	text-align:center; 
 	margin-bottom:10px; border: 1px solid #aaaaaa; 
 	background-color: #BFDFFF;
@@ -17,6 +18,7 @@
    	color: #415E7A; 
  }
 .wl_error {  
+	font-size:0.8em;
 	text-align:center; 
 	background-color: #FFBFBF;
 	margin-bottom:10px; border: 1px solid #9E2626; 
@@ -31,6 +33,7 @@
 }
 
 .wl_warning {  
+	font-size:0.8em;
 	text-align:center; 
 	background-color: #FFF3BF; 
 	margin-bottom:10px; border: 1px solid #aaaaaa; 
@@ -43,6 +46,7 @@
  
 .wl_message {
 	text-align:center; 
+	font-size:0.8em;
 	margin: 5px auto;  
 	width:98%;
 	background-color: #5D754F;
@@ -51,7 +55,7 @@
    	-moz-border-radius: 4px;
    	border-radius: 4px;
    	padding: 4px;  
-   	color: #DFEBA7;
+   	color: #95B384;
 }
 
 .wl_clear {
