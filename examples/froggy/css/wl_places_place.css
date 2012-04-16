@@ -3,6 +3,7 @@
 }
 
 .welocally_place_widget { 
+	font-family: 'Oxygen', verdana, arial, helvetica, sans-serif;
 	font-size: 0.8em;
 	margin-bottom: 20px; 
 	width: 98%; 
@@ -55,9 +56,10 @@
 	font-family: Fixed, monospace;  }
 
 .wl_places_place_name { 
+	font-family: 'Della Respira', verdana, arial, helvetica, sans-serif;
 	font-size: 1.4em;
 	font-weight:bold;
-	color: #C9F097; }
+	color: #F1F5B3; }
 	
 .wl_places_place_adress {
 	font-size: 1.0em;

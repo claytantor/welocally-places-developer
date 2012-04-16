@@ -1,3 +1,6 @@
+/* CSS for shared styling for the wlp style (wordpress) */
+
+
 /* jquery overrides  */
 .ui-dialog {  }
 .ui-dialog-titlebar{  }
@@ -30,6 +33,7 @@
    	color: #9E2626;
 }
 
+
 .wl_warning {  
 	text-align:center; 
 	background-color: #FFF3BF; 
@@ -45,13 +49,13 @@
 	text-align:center; 
 	margin: 5px auto;  
 	width:98%;
-	background-color: #DFEBA7;
-	margin-bottom:10px; border: 1px solid #5D754F; 
+	background-color: #DBDBDB;
+	margin-bottom:10px; border: 1px solid #aaaaaa; 
 	-webkit-border-radius: 4px;
    	-moz-border-radius: 4px;
    	border-radius: 4px;
    	padding: 4px;  
-   	color: #5D754F;
+   	color: #444444;
 }
 
 .wl_clear {
@@ -61,6 +65,11 @@
 .wl_ajax_loading { width: 32px; height:32px; }
 
 .wl_widget_field {  width:100%; margin-bottom:10px;  }
+
+/* ids */
+/*#main {  margin-top: 10px; }
+#map_canvas { height: 400px; }*/
+
 
 
 #welocally_deals_widget {
@@ -121,6 +130,6 @@
 .wl_place_widget_script{display:none}
 
 .wl_field_title {font-size: 1.2em; font-weight: bold;}
-.wl_field_description {font-size: 1.0em; font-style: italic; color: #888888; }
+.wl_field_description {font-size: 0.8em; font-style: italic;}
 
 

@@ -15,8 +15,7 @@
 	  	<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>  	
 
 		<style type="text/css">
-		body { font-family: 'Oxygen', verdana, arial, helvetica, sans-serif; font-size: 1.0em;};
-		
+		body { font-family: 'Oxygen', verdana, arial, helvetica, sans-serif; }		
 		</style>
 	   
     </head>
@@ -27,366 +26,60 @@
 				<div id="widget_parent_container" style="width: 600px; height: 485px; ">
 				    <div id="widget">
 				      <script type="text/javascript">
-<!--
-jQuery(".selector").selectable({ 
+				      
+		jQuery(".selector").selectable({ 
   			cancel: 'a'
-		});  var placeSelectedTrip = new WELOCALLY_PlaceWidget({}).init();
+		});  
+
+		var placeSelectedPlacehound = new WELOCALLY_PlaceWidget({}).init();
+
 	    var cfg = { 
-				id:'multi_trip_1',
+				id:'multi_placehound_1',
 				imagePath: 'images/marker_all_base.png',
+				endpoint:'https://api.welocally.com',
+				baseUrl:'http://placehound.com',
 		    	showSelection: false,
 		    	showLetters: true,
-		    	styles: [{
-		        	    stylers: [
-		        	      { saturation: -37 }
-		        	    ]
-		        	  },{
-		        	    featureType: "road.highway",
-		        	    stylers: [
-		        	      { hue: "#99C969" },
-		        	      { lightness: -21 }
-		        	    ]
-		        	  },{
-		        	    featureType: "water",
-		        	    stylers: [
-		        	      { hue: "#00ff80" },
-		        	      { lightness: -33 }
-		        	    ]
-		        	  },{
-		        	    featureType: "road.arterial",
-		        	    stylers: [
-		        	      { saturation: -61 },
-		        	      { lightness: -27 },
-		        	      { hue: "#B7E38A" }
-		        	    ]
-		        	  },{
-		        	    featureType: "road.local",
-		        	    stylers: [
-		        	      { saturation: -69 },
-		        	      { lightness: -25 }
-		        	    ]
-		        	  }
-		        	],
+		    	styles: [
+		    			  {
+		    				stylers: [
+		    				  { saturation: -45 }
+		    				]
+		    			  },{
+		    				featureType: "road",
+		    				stylers: [
+		    				  { hue: "#ff5500" }
+		    				]
+		    			  },{
+		    				featureType: "water",
+		    				stylers: [
+		    				  { hue: "#ffa200" },
+		    				  { lightness: -55 }
+		    				]
+		    			  },{
+		    				featureType: "poi.park",
+		    				stylers: [
+		    				  { hue: "#ffc300" },
+		    				  { lightness: 14 },
+		    				  { saturation: 21 }
+		    				]
+		    			  }
+	    				],
 		    	overrideSelectableStyle: 'width: 100px;',
-		    	observers:[placeSelectedTrip],
-				places: [
-				         {
-				             "properties": {
-				                 "tags": [
-				                     "gastropubs",
-				                     "italian"
-				                 ],
-				                 "phone": "+1 510 601 0305",
-				                 "classifiers": [
-				                     {
-				                         "category": "Bars & Pubs",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     },
-				                     {
-				                         "category": "Restaurant",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     }
-				                 ],
-				                 "website": "www.dopoadesso.com/",
-				                 "address": "4395 Piedmont Ave",
-				                 "name": "Adesso",
-				                 "province": "CA",
-				                 "owner": "welocally",
-				                 "postcode": "94611",
-				                 "country": "US",
-				                 "city": "Oakland"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     -122.247511,
-				                     37.830127
-				                 ]
-				             }
-				             
-				         },
-				         {
-				             "properties": {
-				                 "phone": "+1 510 985 1200",
-				                 "classifiers": [],
-				                 "address": "4039 Piedmont Ave",
-				                 "name": "Cesar",
-				                 "province": "CA",
-				                 "owner": "welocally",
-				                 "postcode": "94611",
-				                 "city": "Oakland",
-				                 "country": "US"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     -122.252874,
-				                     37.826055
-				                 ]
-				             }
-				           
-				         },
-				         {
-				             "properties": {
-				                 "tags": [
-				                     "pizza",
-				                     "italian"
-				                 ],
-				                 "phone": "+1 510 763 2668",
-				                 "classifiers": [
-				                     {
-				                         "category": "Restaurant",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     },
-				                     {
-				                         "category": "Personal",
-				                         "subcategory": "Shoe Repair & Shine",
-				                         "type": "Services"
-				                     }
-				                 ],
-				                 "website": "www.bootandshoeservice.com",
-				                 "address": "3308 Grand Ave",
-				                 "name": "Boot and Shoe Service",
-				                 "province": "CA",
-				                 "owner": "welocally",
-				                 "postcode": "94610",
-				                 "country": "US",
-				                 "city": "Oakland"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     -122.24672,
-				                     37.812803
-				                 ]
-				             }
-				         },
-				         {
-				             "classifiers": [
-				                 {
-				                     "category": "Restaurant",
-				                     "subcategory": "Japanese",
-				                     "type": "Food & Drink"
-				                 }
-				             ],
-				             "owner": "470dc8fde72d",
-				             "properties": {
-				                 "phone": "(510) 653-7672",
-				                 "address": "4290 Piedmont Ave",
-				                 "website": "http://shimizucuisine.com/",
-				                 "name": "Shimizu Sushi",
-				                 "province": "CA",
-				                 "postcode": "94611",
-				                 "city": "Oakland",
-				                 "country": "US"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     "-122.24934100000002",
-				                     "37.828441"
-				                 ]
-				             }
-				         },
-				         {
-				             "properties": {
-				                 "tags": [
-				                     "gastropubs",
-				                     "new",
-				                     "breakfast",
-				                     "brunch",
-				                     "american"
-				                 ],
-				                 "phone": "+1 510 834 2467",
-				                 "classifiers": [
-				                     {
-				                         "category": "Bars & Pubs",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     },
-				                     {
-				                         "category": "Restaurant",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     }
-				                 ],
-				                 "website": "www.oaklandchopbar.com",
-				                 "address": "247 4th St Ste 111",
-				                 "name": "Chop Bar",
-				                 "province": "CA",
-				                 "owner": "welocally",
-				                 "postcode": "94607",
-				                 "country": "US",
-				                 "city": "Oakland"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     -122.270636,
-				                     37.795375
-				                 ]
-				             }
-				         },
-				         {
-				             "properties": {
-				                 "tags": [
-				                     "new",
-				                     "american"
-				                 ],
-				                 "classifiers": [
-				                     {
-				                         "category": "Bars & Pubs",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     },
-				                     {
-				                         "category": "Restaurant",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     }
-				                 ],
-				                 "address": "347 14th St",
-				                 "name": "Disco Volante",
-				                 "province": "CA",
-				                 "owner": "welocally",
-				                 "postcode": "94612",
-				                 "city": "Oakland",
-				                 "country": "US"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     -122.268604,
-				                     37.803112
-				                 ]
-				             }
-				         },
-				         {
-				             "properties": {
-				                 "tags": [
-				                     "mexican"
-				                 ],
-				                 "phone": "+1 510 261 3325",
-				                 "classifiers": [
-				                     {
-				                         "category": "Restaurant",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     }
-				                 ],
-				                 "address": "1457 Fruitvale Ave",
-				                 "name": "Mi Grullense Restaurant & Tequila Bar",
-				                 "province": "CA",
-				                 "owner": "welocally",
-				                 "postcode": "94601",
-				                 "city": "Oakland",
-				                 "country": "US"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     -122.22572,
-				                     37.778491
-				                 ]
-				             }
-				         },
-				         {
-				             "properties": {
-				                 "tags": [
-				                     "club",
-				                     "grill",
-				                     "belgian",
-				                     "brew",
-				                     "night"
-				                 ],
-				                 "phone": "+1 510 238 8900",
-				                 "classifiers": [
-				                     {
-				                         "category": "Bars & Pubs",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     },
-				                     {
-				                         "category": "Restaurant",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     },
-				                     {
-				                         "category": "Bars & Pubs",
-				                         "subcategory": "Nightclub",
-				                         "type": "Food & Drink"
-				                     }
-				                 ],
-				                 "website": "www.thetrappist.com",
-				                 "address": "460 8th St",
-				                 "name": "The Trappist",
-				                 "province": "CA",
-				                 "owner": "welocally",
-				                 "postcode": "94607",
-				                 "country": "US",
-				                 "city": "Oakland"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     -122.274152,
-				                     37.800371
-				                 ]
-				             }
-				         },
-				         {
-				             "properties": {
-				                 "tags": [
-				                     "frozen",
-				                     "yogurt"
-				                 ],
-				                 "phone": "+1 510 394 5030",
-				                 "classifiers": [
-				                     {
-				                         "category": "Food & Beverages",
-				                         "subcategory": "Farmers Market",
-				                         "type": "Retail Goods"
-				                     },
-				                     {
-				                         "category": "Ice Cream",
-				                         "subcategory": "",
-				                         "type": "Food & Drink"
-				                     }
-				                 ],
-				                 "website": "screamsorbet.com",
-				                 "address": "5030 Telegraph Ave",
-				                 "name": "Scream Sorbet",
-				                 "province": "CA",
-				                 "owner": "welocally",
-				                 "postcode": "94609",
-				                 "country": "US",
-				                 "city": "Oakland"
-				             },
-				             "type": "Place",
-				             "geometry": {
-				                 "type": "Point",
-				                 "coordinates": [
-				                     -122.262205,
-				                     37.83691
-				                 ]
-				             }
-				         }
-				     ]
-	    };  var placesMultiTrip = 
+		    	observers:[placeSelectedPlacehound]
+				
+	    };  
+
+	    var placesMultiPlacehound = 
 			  new WELOCALLY_PlacesMultiWidget(cfg)
-		  		.init(); placeSelectedTrip.setWrapper(cfg, jQuery(placesMultiTrip._selectedSection));
-//--></script>
+		  		.init(); 
+
+  		placeSelectedPlacehound.setWrapper(cfg, jQuery(placesMultiPlacehound._selectedSection));
+
+  		placesMultiPlacehound.search("Pizza", [40.714353,-74.005973], 10.0);
+		
+		
+		</script>
 				    </div>
 			    </div>
 	    			    

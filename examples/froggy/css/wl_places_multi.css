@@ -1,6 +1,7 @@
 
 .wl_places_multi_widget{
 	width: 98%;
+	font-family: 'Oxygen', verdana, arial, helvetica, sans-serif;
 }
 
 .wl_places_multi_selected {
@@ -158,7 +159,7 @@
  
 .wl_places_multi_infobox { 
 	font-size: 0.8em;
-	color: 586B49;
+	color: #586B49;
 	list-style-type:none; 
 	background: #DFEBA7; padding:5px;
 	border: 1px solid #5D754F; 
@@ -173,5 +174,10 @@
  }
  
  .wl_selectable_marker { float: left }
+ 
+ .selectable_title{ 
+ 	font-family: 'Della Respira', verdana, arial, helvetica, sans-serif;
+	font-weight:bold;
+	color: #586B49; };
 
  

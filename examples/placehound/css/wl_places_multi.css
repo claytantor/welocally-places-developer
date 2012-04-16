@@ -9,7 +9,7 @@
    	-moz-border-radius: 4px;
    	border-radius: 4px; 
 	width: 100%;	
-	background:  #586B49;
+	background: #ffffff;
 }
 
 .wl_places_place_wrapper{margin: 5px;}
@@ -35,9 +35,7 @@
 #wl_places_mutli_selectable .ui-selected { background: #e2e2e2;  }
 #wl_places_mutli_selectable ol {  display: inline; }
 #wl_places_mutli_selectable li { 
-	margin-right: 3px; 
-	margin-bottom: 3px; 
-	text-align:left;
+	margin: 3px; 
 	padding: 0.4em; 
 	font-size: 0.8em; 
 	border: 1px solid #aaaaaa; 
@@ -46,8 +44,7 @@
    	-moz-border-radius: 4px;
    	border-radius: 4px; 
    	background: #FEFEFE;
-	/*cursor: pointer;*/
-   	cursor: pointer;
+   	cursor: hand;
    	}
 
 .wl_selected_tag { 
@@ -127,7 +124,6 @@
 
 	
 .wl_places_multi_embed_link { 
-	background: url(../images/link_bg.png);
 	text-align: left; 
 	display: inline-block; 
 	width:120px; height:32px; 
@@ -137,7 +133,6 @@
 	margin-left: 35px; }
 
 .wl_places_multi_share_link { 
-	background: url(../images/link_share_bg.png);
 	text-align: left; 
 	display: inline-block; 
 	width:120px; height:32px; 
@@ -158,10 +153,9 @@
  
 .wl_places_multi_infobox { 
 	font-size: 0.8em;
-	color: 586B49;
 	list-style-type:none; 
-	background: #DFEBA7; padding:5px;
-	border: 1px solid #5D754F; 
+	background: #f2f2f2; padding:5px;
+	border: 1px solid #aaaaaa; 
 	-webkit-border-radius: 4px;
    	-moz-border-radius: 4px;
    	border-radius: 4px;  
@@ -169,9 +163,10 @@
 .wl_places_multi_infobox li { 
 	list-style-type:none; 
 	width: 160px; 
-	color: 586B49;
  }
  
  .wl_selectable_marker { float: left }
-
+ 
+ .selectable_distance{ display:none }
+ 
  

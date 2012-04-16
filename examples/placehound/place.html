@@ -11,10 +11,10 @@
 	  	<link rel="stylesheet" href="css/wl_places.css" type="text/css" />
 	  	<link rel="stylesheet" href="css/wl_places_place.css" type="text/css" />
 	  	<link rel="stylesheet" href="css/wl_places_multi.css" type="text/css" /> 	 	 	
-	  	<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>   	
+	  	<link href='https://fonts.googleapis.com/css?family=Fresca|Asap' rel='stylesheet' type='text/css'>  	
 
 		<style type="text/css">
-		body { font-family: 'Oxygen', verdana, arial, helvetica, sans-serif; };
+		body { font-family: 'Fresca', verdana, arial, helvetica, sans-serif; };
 		
 		</style>
 	   
@@ -28,82 +28,46 @@
 				      <script type="text/javascript">
 				//<![CDATA[
 				           
-				        var place = [
-				                     {				                       
-				                         "properties": {
-				                             "tags": [
-				                                 "italian"
-				                             ],
-				                             "phone": "+1 510 595 8000",
-				                             "classifiers": [
-				                                 {
-				                                     "category": "Restaurant",
-				                                     "subcategory": "",
-				                                     "type": "Food & Drink"
-				                                 }
-				                             ],
-				                             "website": "www.sicilypizzapasta.com/",
-				                             "address": "138 14th St",
-				                             "name": "Gourmet Sicily Pizza",
-				                             "province": "CA",
-				                             "owner": "welocally",
-				                             "postcode": "94612",
-				                             "country": "US",
-				                             "city": "Oakland"
-				                         },
-				                         "type": "Place",
-				                         "geometry": {
-				                             "type": "Point",
-				                             "coordinates": [
-				                                 -122.2636,
-				                                 37.801379
-				                             ]
-				                         }
-				                     }
-				        ];
+				        
 				        
 						var cfg = { 
+							id:'WL_3bYr793qL19cj1NIMYYD3K_37.812803_-122.246720@1303263344',
 							imagePath: 'images/marker_all_base.png',
 							showShare: false,
+							endpoint:'https://api.welocally.com',
+							baseUrl:'http://placehound.com',
 							styles: [
-							         {
-							        	    stylers: [
-							        	      { saturation: -37 }
-							        	    ]
-							        	  },{
-							        	    featureType: "road.highway",
-							        	    stylers: [
-							        	      { hue: "#99C969" },
-							        	      { lightness: -21 }
-							        	    ]
-							        	  },{
-							        	    featureType: "water",
-							        	    stylers: [
-							        	      { hue: "#00ff80" },
-							        	      { lightness: -33 }
-							        	    ]
-							        	  },{
-							        	    featureType: "road.arterial",
-							        	    stylers: [
-							        	      { saturation: -61 },
-							        	      { lightness: -27 },
-							        	      { hue: "#B7E38A" }
-							        	    ]
-							        	  },{
-							        	    featureType: "road.local",
-							        	    stylers: [
-							        	      { saturation: -69 },
-							        	      { lightness: -25 }
-							        	    ]
-							        	  }
-							        	]
+					    			  {
+					    				stylers: [
+					    				  { saturation: -45 }
+					    				]
+					    			  },{
+					    				featureType: "road",
+					    				stylers: [
+					    				  { hue: "#ff5500" }
+					    				]
+					    			  },{
+					    				featureType: "water",
+					    				stylers: [
+					    				  { hue: "#ffa200" },
+					    				  { lightness: -55 }
+					    				]
+					    			  },{
+					    				featureType: "poi.park",
+					    				stylers: [
+					    				  { hue: "#ffc300" },
+					    				  { lightness: 14 },
+					    				  { saturation: 21 }
+					    				]
+					    			  }
+				    				]
 						};
 							    		
 						var placeWidget = 
 							  new WELOCALLY_PlaceWidget(cfg)
 						  		.init();
 						
-						placeWidget.loadLocal(place[0]);
+						placeWidget.loadRemote();
 				       
 				
 				      //]]>

@@ -45,13 +45,13 @@
 	text-align:center; 
 	margin: 5px auto;  
 	width:98%;
-	background-color: #DFEBA7;
-	margin-bottom:10px; border: 1px solid #5D754F; 
+	background-color: #5D754F;
+	margin-bottom:10px; border: 1px solid #DFEBA7; 
 	-webkit-border-radius: 4px;
    	-moz-border-radius: 4px;
    	border-radius: 4px;
    	padding: 4px;  
-   	color: #5D754F;
+   	color: #DFEBA7;
 }
 
 .wl_clear {

@@ -665,3 +665,55 @@ WELOCALLY_PlacesMultiWidget.prototype.makeMapStatus = function (map, markers) {
 	status = status + ' zoom: '+map.getZoom();
 	return status;
 };
+
+
+WELOCALLY_PlacesMultiWidget.prototype.search = function (search, coordinates, radius){
+
+	var _instance = this;
+	
+	var searchValue = WELOCALLY.util.replaceAll(search,' ','+');
+
+	var query = {
+		q: searchValue,
+		loc: coordinates[0]+'_'+coordinates[1],
+		radiusKm: radius
+	};
+
+	var surl = _instance._cfg.endpoint +
+		'/geodb/place/1_0/search.json?'+WELOCALLY.util.serialize(query)+"&callback=?";
+
+	_instance.setStatus(_instance._mapStatus, 'Finding places','wl_update',true);
+	jQuery(_instance._results).hide();
+
+	var searchLocation = 
+		new google.maps.LatLng(coordinates[0], coordinates[1]); 	
+	
+	_instance.resetOverlays(
+			searchLocation,
+			_instance._placeMarkers);
+		
+	jQuery.ajax({
+			  url: surl,
+			  dataType: "json",
+			  success: function(data) {
+				//set to result bounds if enough results
+				if(data != null && data.length>0){						
+					_instance.setStatus(_instance._mapStatus, '','wl_message',false);
+					_instance.setPlaces(data);						
+				} else {
+					
+					_instance.setStatus(_instance._mapStatus, 'No results were found matching your search.','wl_warning',false);						
+					_instance.refreshMap(_instance._searchLocation);
+				}
+				
+				var listener = google.maps.event.addListener(_instance._map, "idle", function() { 						
+					if (_instance._map.getZoom() > 17) _instance._map.setZoom(17); 
+					google.maps.event.removeListener(listener); 
+				});
+														
+			}
+	});
+};
+
+
+
