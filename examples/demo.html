@@ -7,7 +7,6 @@
 			demo
 		</title>
 		<meta name="author" content="welocally">
-		<meta charset="utf-8"><!-- Date: 2012-04-14 -->
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
@@ -25,6 +24,7 @@ body { font-family: 'Carme', verdana, arial, helvetica, sans-serif; font-size: 0
 .document-2col{ display: inline-block; width:800px; margin-right: 10px; height: 330px; vertical-align: top; }
 
 .place-iframe{ width:440px; height: 510px; border: 0px; }
+.places-iframe {width:610px; height: 510px; border: 0px;}
 .place-col-left{ display: inline-block; width:420px; margin-right: 10px; height: 630px; vertical-align: top; }
 .place-col-right{ display: inline-block; width:360px; margin-right: 10px; height: 630px; vertical-align: top; }
 
@@ -38,7 +38,7 @@ body { font-family: 'Carme', verdana, arial, helvetica, sans-serif; font-size: 0
 	<body>
 <script type="text/javascript">
 jQuery(function() {
-	jQuery( "#tabs" ).tabs({ selected: 0 }).css('height','640px');
+	jQuery( "#tabs" ).tabs({ selected: 0 }).css('height','660px');
 	jQuery( "#tabs" ).tabs({
 		ajaxOptions: {
 			error: function( xhr, status, index, anchor ) {
@@ -48,7 +48,30 @@ jQuery(function() {
 			}
 		}
 	});
+
+	/*  we do this because we dont want google maps to load in the background,
+			it is a well known issue that google maps needs a refresh if it is open 
+			in a hidden div this seems to only happen in firefox for iframe loading*/
+	var ua = jQuery.browser;
+	if ( ua.mozilla  ) {
+		//refresh iframe
+		jQuery('#tabs').tabs({
+			  select: function(event, ui){  	
+				jQuery(this).find('iframe').show();
+			  	jQuery(this).find('iframe').attr( 'src', function ( i, val ) { return val; });		  	
+			  }
+		});
+	}		
+
+
 });
+
+function refreshSrc(name,src){
+	jQuery(name).attr( 'src', src);	
+}
+
+
+
 </script>
 		<div class="demo">
 			<div id="tabs">
@@ -122,7 +145,7 @@ jQuery(function() {
 				<div id="tabs-46a5" style="display:inline;">
 					<div class="place-col-left">
 						<h3>Place Widget Configuration</h3>
-						<iframe class="place-iframe" src="welocally/place.html"></iframe>
+						<iframe id="welocally-place-iframe" class="place-iframe" src="welocally/place.html"></iframe>
 					</div>
 					<div class="place-col-right">
 						<p>
@@ -142,7 +165,7 @@ jQuery(function() {
 				<div id="tabs-46a6" style="display:inline;">
 					<div class="multi-col-left">
 						<h3>Multi Widget Configuration</h3>
-						<iframe src="welocally/places.html" style="width:610px; height: 510px; border: 0px;"></iframe>
+						<iframe id="welocally-places-iframe" class="places-iframe" src="welocally/places.html"></iframe>
 					</div>
 					<div class="multi-col-right">
 						<div style="margin-top:10px;">
@@ -194,7 +217,7 @@ jQuery(function() {
 				<div id="tabs-5ae0">
 					<div class="place-col-left">
 						<h3>Styling A Place (Froggy Theme)</h3>
-						<iframe class="place-iframe" src="froggy/place.html"></iframe>
+						<iframe id="froggy-place-iframe" class="place-iframe" src="froggy/place.html"></iframe>
 					</div>
 					<div class="place-col-right">
 						<p>
@@ -214,7 +237,7 @@ jQuery(function() {
 				<div id="tabs-5ae1">
 					<div class="multi-col-left">
 						<h3>Styling The Multi Widget (Froggy Theme)</h3>
-						<iframe src="froggy/places.html" style="width:610px; height: 510px; border: 0px;"></iframe>
+						<iframe id="froggy-places-iframe" class="places-iframe" src="froggy/places.html"></iframe>
 					</div>
 					<div class="multi-col-right">
 						<p>
@@ -233,7 +256,7 @@ jQuery(function() {
 				<div id="tabs-6ae0">
 					<div class="place-col-left">
 						<h3>Placehound Cloud Place (Developer Accounts Only)</h3>
-						<iframe class="place-iframe" src="placehound/place.html"></iframe>
+						<iframe id="placehound-place-iframe" class="place-iframe" src="placehound/place.html"></iframe>
 					</div>
 					<div class="place-col-right">
 						<p>
@@ -251,7 +274,7 @@ jQuery(function() {
 				<div id="tabs-6ae1">
 					<div class="multi-col-left">
 						<h3>Placehound Cloud Places (Developer Accounts Only)</h3>
-						<iframe src="placehound/places.html" style="width:610px; height: 510px; border: 0px;"></iframe>
+						<iframe id="placehound-places-iframe" class="places-iframe" src="placehound/places.html"></iframe>
 					</div>
 					<div class="multi-col-right">
 						<p>
@@ -267,6 +290,7 @@ jQuery(function() {
 					</div>
 				</div>
 			</div>
+			<div style="color:white">Version 1.1.2 welocally places developer</div>
 		</div><!-- End demo -->
 	</body>
 </html>
