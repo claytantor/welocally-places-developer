@@ -15,78 +15,101 @@ function WELOCALLY_PlaceWidget (cfg) {
 	
 	this.init = function() {
 		
-		var error;
-		if (!cfg) {
-			error = "Please provide configuration for the widget";
-			cfg = {};
-		}
-		
-		// hostname (optional) - the name of the host to use
-		if (!cfg.endpoint) {
-			cfg.endpoint = 'https://api.welocally.com';
-		}
-		
-		if (!cfg.imagePath) {
-			cfg.imagePath = 'http://placehound.com/images/marker_all_base.png';
-		}
-		
-		if (!cfg.placehoundPath) {
-			cfg.placehoundPath = 'http://placehound.com';
-		}
-		
-		if (!cfg.zoom) {
-			cfg.zoom = 16;
-		}
-		
-		if (!cfg.showShare) {
-			cfg.showShare = false;
-		}
-		
-		//look in query string
-		if (!cfg.id) {
-			cfg.id = WELOCALLY.util.keyGenerator();
-		}
-			
-		this.cfg = cfg;
+		var errors = this.initCfg(cfg);
 		
 		// Get current script object
 		var script = jQuery('SCRIPT');
 		script = script[script.length - 1];
-
-		// Build Widget
-		this.wrapper = jQuery('<div></div>');
-		jQuery(this.wrapper).css('display','none');			
-		jQuery(this.wrapper).attr('class','welocally_place_widget');
-		jQuery(this.wrapper).attr('id','welocally_place_widget_'+this.cfg.id);
-		
-		//google maps does not like jquery instances
-		this.map_canvas = document.createElement('DIV');
-		jQuery(this.map_canvas).css('display','none');	
-	    jQuery(this.map_canvas).attr('class','wl_places_place_map_canvas');
-		jQuery(this.map_canvas).attr("id","wl_place_map_canvas_widget_"+cfg.id);
-		jQuery(this.wrapper).append(this.map_canvas);				
-	
-		jQuery(script).parent().before(this.wrapper);
+				
+		if(errors){
+			var errorsArea = jQuery('<div></div>');
+			WELOCALLY.ui.setStatus(errorsArea, errors,'wl_error');
+			jQuery(script).parent().before(errorsArea);			
+		} else {
+			// Build Widget
+			this.wrapper = this.makeWrapper();	
+			jQuery(script).parent().before(this.wrapper);		
+		}
 		
 		return this;
 					
-	};
-	
+	};	
 }
 
-WELOCALLY_PlaceWidget.prototype.setWrapper = function(cfg, wrapper) {
+WELOCALLY_PlaceWidget.prototype.initCfg = function(cfg) {
+	var errors = [];
+	if (!cfg) {
+		errors.push('Please provide a configuration');
+	}
+	
+	// hostname (optional) - the name of the host to use
+	if (!cfg.endpoint) {
+		cfg.endpoint = 'https://api.welocally.com';
+	}
+	
+	if (!cfg.imagePath) {
+		cfg.imagePath = 'http://placehound.com/images/marker_all_base.png';
+	}
+	
+	if (!cfg.placehoundPath) {
+		cfg.placehoundPath = 'http://placehound.com';
+	}
+	
+	if (!cfg.zoom) {
+		cfg.zoom = 16;
+	}
+	
+	if (!cfg.showShare) {
+		cfg.showShare = false;
+	}
+	
+	//look in query string
+	if (!cfg.id) {
+		cfg.id = WELOCALLY.util.keyGenerator();
+	}
+	
+	if(errors.length>0)
+		return errors;
+	
 	this.cfg = cfg;
-	this.wrapper = wrapper;
-	return this;
 };
 
-WELOCALLY_PlaceWidget.prototype.loadWithWrapper = function(cfg, map_canvas, wrapper) {
+
+WELOCALLY_PlaceWidget.prototype.makeWrapper = function() {
+	// Build Widget
+	var _instance = this;
+	
+	// Build Widget
+	this.wrapper = jQuery('<div></div>');
+	jQuery(this.wrapper).css('display','none');			
+	jQuery(this.wrapper).attr('class','welocally_place_widget');
+	jQuery(this.wrapper).attr('id','welocally_place_widget_'+this.cfg.id);
+	
+	
+	//google maps does not like jquery instances
+	this.map_canvas = document.createElement('DIV');
+	jQuery(this.map_canvas).css('display','none');	
+    jQuery(this.map_canvas).attr('class','wl_places_place_map_canvas');
+	jQuery(this.map_canvas).attr("id","wl_place_map_canvas_widget_"+cfg.id);
+		
+
+	return this.wrapper;
+	
+};
+
+//WELOCALLY_PlaceWidget.prototype.setWrapper = function(cfg, wrapper) {
+//	this.cfg = cfg;
+//	this.wrapper = wrapper;
+//	return this;
+//};
+
+/*WELOCALLY_PlaceWidget.prototype.loadWithWrapper = function(cfg, map_canvas, wrapper) {
 	this.cfg = cfg;
 	this.wrapper = wrapper;
 	jQuery(this.wrapper).html(map_canvas);
 	this.load(map_canvas);
 	return this;
-};
+};*/
 
 WELOCALLY_PlaceWidget.prototype.loadRemote = function() {
 	this.load(this.map_canvas);
@@ -121,7 +144,7 @@ WELOCALLY_PlaceWidget.prototype.load = function(map_canvas) {
 			url: surl,
 			dataType: "json",
 			success: function(data) {
-				_instance.map = _instance.initMapForPlace(data[0],map_canvas);
+				//_instance.map = _instance.initMapForPlace(data[0],map_canvas);
 				_instance.show(data[0]);
 				_instance.setMapEvents(_instance.map);
 				
@@ -210,9 +233,13 @@ WELOCALLY_PlaceWidget.prototype.makePlaceContent = function(selectedPlace, cfg) 
 	
 	var placeWrapper = jQuery('<div class="wl_places_place_wrapper"></div>');
 	
-	//get the map if its visible and add it
-	//jQuery(placeWrapper).append(this.map_canvas);
-	
+	//set the map location, hide if cfg to off
+	if(!_instance.cfg.hidePlaceSectionMap){
+		jQuery(placeWrapper).append(this.map_canvas);
+		_instance.map = _instance.initMapForPlace(selectedPlace, this.map_canvas);
+	} else {
+		jQuery(this.map_canvas).hide();
+	}
 	
 	if (selectedPlace.properties.titlelink != null
 					&& selectedPlace.properties.titlelink != '') {
@@ -324,11 +351,10 @@ WELOCALLY_PlaceWidget.prototype.makePlaceContent = function(selectedPlace, cfg) 
 	return placeWrapper;
 };
 
-
+//for place selectors
 WELOCALLY_PlaceWidget.prototype.show = function(selectedPlace) {	
-	this.wrapper.append(this.makePlaceContent(selectedPlace, this.cfg));	
+	this.wrapper.html(this.makePlaceContent(selectedPlace, this.cfg));	  
 	jQuery(this.wrapper).show();
-	                        
 };
 
 

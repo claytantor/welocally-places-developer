@@ -28,7 +28,7 @@
   			cancel: 'a'
 		});  
 
-		var placeSelectedPlacehound = new WELOCALLY_PlaceWidget({}).init();
+		var placeSelected = new WELOCALLY_PlaceWidget();
 
 	    var cfg = { 
 				id:'multi_placehound_1',
@@ -63,19 +63,21 @@
 		    			  }
 	    				],
 		    	overrideSelectableStyle: 'width: 100px;',
-		    	observers:[placeSelectedPlacehound]
+		    	observers:[placeSelected]
 				
 	    };  
 
-	    var placesMultiPlacehound = 
+	    var placesMulti = 
 			  new WELOCALLY_PlacesMultiWidget(cfg)
 		  		.init(); 
 
-  		placeSelectedPlacehound.setWrapper(cfg, jQuery(placesMultiPlacehound._selectedSection));
+	  	//setup the selected area   
+	  	placeSelected.initCfg(cfg);
+	  	placesMulti.getSelectedArea().append(placeSelected.makeWrapper());
 
-  		placesMultiPlacehound.search("Pizza", [40.714353,-74.005973], 10.0);
-		
-		
+	  	//remote search
+	  	placesMulti.search("Pizza", [40.714353,-74.005973], 10.0);
+				
 		</script>
 				    </div>
 			    </div>

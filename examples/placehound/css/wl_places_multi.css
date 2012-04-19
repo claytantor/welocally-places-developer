@@ -6,12 +6,12 @@
 }
 
 .wl_places_multi_selected {
-	border: 1px solid #aaaaaa; 
+	/*border: 1px solid #aaaaaa; 
 	-webkit-border-radius: 4px;
    	-moz-border-radius: 4px;
    	border-radius: 4px; 
 	width: 100%;	
-	background: #E0D5A2;
+	background: #E0D5A2;*/
 }
 
 .wl_places_place_wrapper{margin: 5px;}

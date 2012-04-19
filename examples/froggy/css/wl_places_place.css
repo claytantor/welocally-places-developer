@@ -5,14 +5,15 @@
 .welocally_place_widget { 
 	font-family: 'Oxygen', verdana, arial, helvetica, sans-serif;
 	font-size: 0.8em;
-	margin-bottom: 20px; 
-	width: 98%; 
+	margin-bottom: 5px; 
+	width: 100%; 
 	-webkit-border-radius: 4px;
    	-moz-border-radius: 4px;
    	border-radius: 4px; 
    	border:2px solid #aca;
    	background-color: #586B49;
    	padding:0px; }
+
    	
 .wl_places_place {  
 	padding: 10px;

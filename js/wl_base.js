@@ -31,6 +31,28 @@ if (!window.WELOCALLY) {
 		    	}
     		}
     	},
+    	ui: {
+    		setStatus : function(statusArea, message, type, showloading){
+    			var _instance  = this;
+    			
+    			jQuery(statusArea).html('');
+    			jQuery(statusArea).removeClass();
+    			jQuery(statusArea).addClass(type);
+    			
+    			if(showloading){
+    				jQuery(statusArea).append(showloading);
+    			}
+    			
+    			jQuery(statusArea).append('<em>'+message+'</em>');
+    			
+    			if(message != ''){
+    				jQuery(statusArea).show();
+    			} else {
+    				jQuery(statusArea).hide();
+    			}	
+    			
+    		}
+    	},
     	util: {
     		getErrorString: function(errorModel){
     			//{"errors":[{"errorMessage":"Please provide the name for your site.","errorCode":104}]}
@@ -150,5 +172,5 @@ if (!window.WELOCALLY) {
 				   }
 			}
     	}    	
-    }
+    };
 }

@@ -30,8 +30,11 @@
 <script type="text/javascript">
 jQuery(".selector").selectable({ 
 			cancel: 'a'
-});  var placeSelectedTrip = new WELOCALLY_PlaceWidget({}).init();
-   var cfg = { 
+});  
+
+	var placeSelected = new WELOCALLY_PlaceWidget();
+	
+   	var cfg = { 
 		id:'multi_trip_1',
 		imagePath: 'images/marker_all_base.png',
     	showSelection: false,
@@ -75,7 +78,7 @@ jQuery(".selector").selectable({
 		        	  }
 		        	],
     	overrideSelectableStyle: 'width: 100px;',
-    	observers:[placeSelectedTrip],
+    	observers:[placeSelected],
 		places: [
 	  {
 	        "properties": {				            
@@ -403,9 +406,15 @@ jQuery(".selector").selectable({
 	]
 };  
 
-var placesMultiTrip = 
+   	
+var placesMulti = 
 	  new WELOCALLY_PlacesMultiWidget(cfg)
-  		.init(); placeSelectedTrip.setWrapper(cfg, jQuery(placesMultiTrip._selectedSection));
+  		.init(); 
+
+//setup the selected area   
+placeSelected.initCfg(cfg);
+placesMulti.getSelectedArea().append(placeSelected.makeWrapper());
+
 
 </script>
 				    </div>
