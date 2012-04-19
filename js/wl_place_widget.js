@@ -210,6 +210,8 @@ WELOCALLY_PlaceWidget.prototype.makePlaceContent = function(selectedPlace, cfg) 
 	
 	var placeWrapper = jQuery('<div class="wl_places_place_wrapper"></div>');
 	
+	//get the map if its visible and add it
+	//jQuery(placeWrapper).append(this.map_canvas);
 	
 	
 	if (selectedPlace.properties.titlelink != null
@@ -324,7 +326,7 @@ WELOCALLY_PlaceWidget.prototype.makePlaceContent = function(selectedPlace, cfg) 
 
 
 WELOCALLY_PlaceWidget.prototype.show = function(selectedPlace) {	
-	this.wrapper.html(this.makePlaceContent(selectedPlace, this.cfg));	
+	this.wrapper.append(this.makePlaceContent(selectedPlace, this.cfg));	
 	jQuery(this.wrapper).show();
 	                        
 };
