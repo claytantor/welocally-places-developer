@@ -1,28 +1,18 @@
-
 .wl_places_place_wrapper{
 }
 
-
-/* overall style for the widget */
 .welocally_place_widget { 
 	font-family: 'Carme', verdana, arial, helvetica, sans-serif;
-	color: #666;
 	font-size: 0.8em;
 	margin-bottom: 20px; 
 	width: 98%; 
-	-webkit-border-radius: 4px;
-   	-moz-border-radius: 4px;
-   	border-radius: 4px; 
    	background: #f2f2f2;
-   	border:1px solid #999;
+   	border:1px solid #999999;
    	padding:5px; }
    	
 .wl_places_place {  
 	padding: 10px;
 	margin-bottom:10px; border: 1px solid #aaaaaa; 
-	-webkit-border-radius: 4px;
-   	-moz-border-radius: 4px;
-   	border-radius: 4px; 
    	background: #fafafa;
 }
 
@@ -30,9 +20,6 @@
 .wl_places_place_tag input{ 
 	margin-bottom: 5px;
 	border: 1px solid #9c9c9c;
-	-webkit-border-radius: 4px;
-   	-moz-border-radius: 4px;
-   	border-radius: 4px;
    	padding: 4px;
    	color: #7d7d7d;
    	font-weight:bold;
@@ -46,9 +33,6 @@
 .wl_places_place_script { width:100%; padding: 4px; display:none }
 .wl_places_place_script textarea{ 
 	border: 1px solid #9c9c9c;
-	-webkit-border-radius: 4px;
-   	-moz-border-radius: 4px;
-   	border-radius: 4px;
    	padding: 4px;
    	color: #7d7d7d;
    	font-weight:bold;
@@ -61,115 +45,78 @@
 
 .wl_places_place_name { 
 	font-size: 1.4em;
-	font-weight:bold;}
+	font-weight:bold;
+	color: #444444; }
 	
 .wl_places_place_adress {
 	font-size: 1.0em;
 	font-weight:bold;
-	color: #aaa; 
-}
-
-.wl_places_place_phone {
-	color: #aaa;
+	color: #444444;
 }
 	
-	
-/* where you styling of links */	
 .wl_places_place_web_link { 
-	background: url(../images/grey_web.png);
+	background: url(../../images/link_web_bg.png);
 	text-align: left;  
 	display: inline-block; 
-	width:70px; height:22px; 
-	margin-right: 15px; }
+	width:120px; 
+	height:32px; 
+	margin-right: 20px; }
 	
 .wl_places_place_web_link a { 
-    color: #888; 
-    margin-left: 22px; 
-    position: relative;
-    top: 5px; }
-	
-.wl_places_place_web_link a:hover { 
-	color: #68AAE3;
-	}
-	
-
+	margin-left: 35px; }
 	
 .wl_places_place_driving_link { 
-	background: url(../images/grey_driving.png);
+	background: url(../../images/link_driving_bg.png);
 	text-align: left; 
 	display: inline-block; 
-	width:70px; height:26px; 
+	width:120px; height:32px; 
 	margin-right: 15px; }
 
 .wl_places_place_driving_link a { 
-	color: #888888;
-	margin-left: 22px; 
-	position: relative;
-	top: 5px;
-	}
+	margin-left: 35px; }
 
-.wl_places_place_driving_link a:hover { 
-	color: #68AAE3;
-	}
 	
-		
 .wl_places_place_embed_link { 
-	background: url(../images/grey_share.png);
+	background: url(../../images/link_bg.png);
 	text-align: left; 
 	display: inline-block; 
-	width:70px; height:26px; 
+	width:120px; height:32px; 
 	margin-right: 15px; }	
 	
 .wl_places_place_embed_link a { 
-	color: #888888;
-	margin-left: 22px; 
-	position: relative;
-	top: 5px;
-}
+	margin-left: 35px; }
 
-.wl_places_place_driving_link a:hover { 
-	color: #68AAE3;
-	}
-	
-	
 .wl_places_place_share_link { 
-	background: url(../images/grey_share.png);
+	background: url(../../images/link_share_bg.png);
 	text-align: left; 
 	display: inline-block; 
-	width:70px; height:26px; 
+	width:120px; height:32px; 
 	margin-right: 15px; }	
 	
 .wl_places_place_share_link a { 
-	color: #888888;
-	margin-left: 22px; 
-	position: relative;
-	top: 5px;
-	}
+	margin-left: 35px; }
 
-.wl_places_place_share_link a:hover { 
-	color: #68AAE3;
-	}
-	
-	
+
 .wl_places_place_post_link { 
-	background: url(../images/link_post_bg.png);
+	background: url(../../images/link_post_bg.png);
 	text-align: left; 
 	display: inline-block; 
-	width:70px; height:26px; 
+	width:120px; height:32px; 
 	margin-right: 15px; }	
 	
 .wl_places_place_post_link a { 
-	color: #888888;
-	margin-left: 22px; 
-	position: relative;
-	top: 5px;
-	}
+	margin-left: 35px; }
+
+.wl_places_place_field { 
+	font-size: 1.0em; 
+	font-family: Fixed, monospace; font-weight:bold; text-align:center;
+	margin-top:5px;
+	border: 1px #aaaaaa; 
+   	padding: 4px;
+   	color: #7d7d7d;  }
+   		
+
 	
-.wl_places_place_post_link a:hover { 
-	color: #68AAE3;
-	}
-	
-/* where you set the map size */
 .wl_places_place_map_canvas {height: 320px; width: 100%}
 
 .wl_places_place_map_canvas img {
@@ -177,13 +124,7 @@
 }
 
 
-.wl_places_place_field { 
-	font-size: 1.0em; 
-	font-family: Fixed, monospace; font-weight:bold; text-align:center;
-	margin-top:5px;
-	border: 1px #aaaaaa; 
-	-webkit-border-radius: 4px;
-   	-moz-border-radius: 4px;
-   	border-radius: 4px;
-   	padding: 4px;
-   	color: #7d7d7d;  }
+
+
+   	
+

@@ -46,6 +46,10 @@ WELOCALLY_PlacesMultiWidget.prototype.initCfg = function(cfg) {
 		cfg = {};
 	}
 	
+	if (!cfg.id) {
+		cfg.id = WELOCALLY.util.keyGenerator();
+	}
+	
 	// summary (optional) - the summary of the article
 	// hostname (optional) - the name of the host to use
 	if (!cfg.endpoint) {
@@ -79,9 +83,10 @@ WELOCALLY_PlacesMultiWidget.prototype.initCfg = function(cfg) {
 
 WELOCALLY_PlacesMultiWidget.prototype.makeWrapper = function() {
 	// Build wrapper
+	var _instance = this;
 	var wrapper = jQuery('<div></div>');		
 	jQuery(wrapper).attr('class','wl_places_multi_widget');
-	jQuery(wrapper).attr('id','wl_places_multi_widget_'+cfg.id);
+	jQuery(wrapper).attr('id','wl_places_multi_widget_'+_instance._cfg.id);
 	
 	//selected area
 	this._selectedSection = 
@@ -93,7 +98,7 @@ WELOCALLY_PlacesMultiWidget.prototype.makeWrapper = function() {
 	this._map_canvas = document.createElement('DIV');
 	jQuery(this._map_canvas).css('display','none');	
     jQuery(this._map_canvas).attr('class','wl_places_multi_map_canvas');
-	jQuery(this._map_canvas).attr("id","welocally_places_multi_map_canvas_"+cfg.id);
+	jQuery(this._map_canvas).attr("id","welocally_places_multi_map_canvas_"+_instance._cfg.id);
 	jQuery(wrapper).append(this._map_canvas);
 	
 	this._mapStatus = jQuery('<div class="wl_places_multi_map_status"></div>');
@@ -127,7 +132,12 @@ WELOCALLY_PlacesMultiWidget.prototype.setPlaces = function(places) {
 		_instance.deleteOverlays(_instance._placeMarkers);
 	    _instance.addPlaces(_instance._map, places, _instance._placeMarkers);
 	    _instance.setMapEvents(_instance._map, _instance._placeMarkers);		
-	}		
+	}	
+	
+	if(!_instance._cfg.hideMap){
+		jQuery(_instance._map_canvas).show();
+	}
+	
 };
 
 WELOCALLY_PlacesMultiWidget.prototype.initMap = function(map_canvas) {
@@ -162,6 +172,7 @@ WELOCALLY_PlacesMultiWidget.prototype.initMapForPlaces = function(places, map_ca
 		
     var _instance = this;
     var map = _instance.initMap(map_canvas);
+    
        
     //add all the markers
     _instance.addPlaces(map, places, placeMarkers);
