@@ -64,9 +64,7 @@ function WELOCALLY_PlaceWidget (cfg) {
 		jQuery(this.map_canvas).css('display','none');	
 	    jQuery(this.map_canvas).attr('class','wl_places_place_map_canvas');
 		jQuery(this.map_canvas).attr("id","wl_place_map_canvas_widget_"+cfg.id);
-		jQuery(this.wrapper).append(this.map_canvas);
-				
-		//this.load(this.map_canvas);
+		jQuery(this.wrapper).append(this.map_canvas);				
 	
 		jQuery(script).parent().before(this.wrapper);
 		
@@ -326,7 +324,7 @@ WELOCALLY_PlaceWidget.prototype.makePlaceContent = function(selectedPlace, cfg) 
 
 
 WELOCALLY_PlaceWidget.prototype.show = function(selectedPlace) {	
-	this.wrapper.append(this.makePlaceContent(selectedPlace, this.cfg));	
+	this.wrapper.html(this.makePlaceContent(selectedPlace, this.cfg));	
 	jQuery(this.wrapper).show();
 	                        
 };
