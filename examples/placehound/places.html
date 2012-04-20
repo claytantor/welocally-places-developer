@@ -8,6 +8,9 @@
 	    <script src="../../js/wl_place_widget.js" type="text/javascript"></script>
 	    <script src="../../js/wl_places_multi_widget.js" type="text/javascript"></script>
 	    <script src="../../js/wl_infobox.js" type="text/javascript"></script>
+	    
+	    <!-- the geodb cloud search using the welocally placehound db -->
+	    <script src="../../js/wl_geodb_search.js" type="text/javascript"></script>
 
 	  	<link rel="stylesheet" href="css/wl_places.css" type="text/css" />
 	  	<link rel="stylesheet" href="css/wl_places_place.css" type="text/css" />
@@ -75,8 +78,16 @@
 	  	placeSelected.initCfg(cfg);
 	  	placesMulti.getSelectedArea().append(placeSelected.makeWrapper());
 
-	  	//remote search
-	  	placesMulti.search("Pizza", [40.714353,-74.005973], 10.0);
+	  	//this is the cloud geodb search, developer accounts
+	  	var placesSearch = new WELOCALLY_GeoDbSearch({
+	  		endpoint: 'https://api.welocally.com',
+	  		q: "Pizza",
+	  		loc: [40.714353,-74.005973],
+	  		radiusKm: 10.0,
+	  		observers: [placesMulti]
+	  		}).init();
+
+		placesSearch.search();
 				
 		</script>
 				    </div>

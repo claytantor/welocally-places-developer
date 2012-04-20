@@ -34,21 +34,7 @@ function WELOCALLY_PlacesMultiWidget (cfg) {
 			this.wrapper = this.makeWrapper();	
 			jQuery(script).parent().before(this.wrapper);		
 		}
-		
-//		this.initCfg(cfg);
-//		
-//		// Get current script object
-//		var script = jQuery('SCRIPT');
-//		script = script[script.length - 1];
-//
-//		var wrapper = this.makeWrapper();
-//	
-//		jQuery(script).parent().before(wrapper);
-//		jQuery(this.map_canvas).show();	
-//		
-//		
-//		jQuery(wrapper).show();	
-		
+				
 		return this;
 					
 	};
@@ -67,13 +53,10 @@ WELOCALLY_PlacesMultiWidget.prototype.initCfg = function(cfg) {
 		cfg.hidePlaceSectionMap=true;
 	}
 	
-	
-	
 	if (!cfg.id) {
 		cfg.id = WELOCALLY.util.keyGenerator();
 	}
 	
-	// summary (optional) - the summary of the article
 	// hostname (optional) - the name of the host to use
 	if (!cfg.endpoint) {
 		cfg.endpoint = 'https://api.welocally.com';
@@ -707,58 +690,19 @@ WELOCALLY_PlacesMultiWidget.prototype.makeMapStatus = function (map, markers) {
 };
 
 
-WELOCALLY_PlacesMultiWidget.prototype.search = function (search, coordinates, radius){
-
-	var _instance = this;
-	
-	var searchValue = WELOCALLY.util.replaceAll(search,' ','+');
-
-	var query = {
-		q: searchValue,
-		loc: coordinates[0]+'_'+coordinates[1],
-		radiusKm: radius
-	};
-
-	var surl = _instance.cfg.endpoint +
-		'/geodb/place/1_0/search.json?'+WELOCALLY.util.serialize(query)+"&callback=?";
-
-	_instance.setStatus(_instance.mapStatus, 'Finding places','wl_update',true);
-	jQuery(_instance.results).hide();
-
-	var searchLocation = 
-		new google.maps.LatLng(coordinates[0], coordinates[1]); 	
-	
-	_instance.resetOverlays(
-			searchLocation,
-			_instance.placeMarkers);
-		
-	jQuery.ajax({
-			  url: surl,
-			  dataType: "json",
-			  success: function(data) {
-				//set to result bounds if enough results
-				if(data != null && data.length>0){						
-					_instance.setStatus(_instance.mapStatus, '','wl_message',false);
-					_instance.setPlaces(data);						
-				} else {
-					
-					_instance.setStatus(_instance.mapStatus, 'No results were found matching your search.','wl_warning',false);						
-					_instance.refreshMap(_instance.searchLocation);
-				}
-				
-				var listener = google.maps.event.addListener(_instance.map, "idle", function() { 						
-					if (_instance.map.getZoom() > 17) _instance.map.setZoom(17); 
-					google.maps.event.removeListener(listener); 
-				});
-														
-			}
-	});
-};
-
+//same as selected for this widget when being observer
 WELOCALLY_PlacesMultiWidget.prototype.getSelectedArea = function (){
 	var _instance = this;
 	return _instance.selectedSection;
 };
+
+//same as selected for this widget when being observer
+WELOCALLY_PlacesMultiWidget.prototype.getStatusArea = function (){
+	var _instance = this;
+	return _instance.selectedSection;
+};
+
+
 
 
 

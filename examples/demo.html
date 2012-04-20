@@ -29,7 +29,7 @@ body { font-family: 'Carme', verdana, arial, helvetica, sans-serif; font-size: 0
 .place-col-right{ display: inline-block; width:360px; margin-right: 10px; height: 630px; vertical-align: top; }
 
 .multi-col-left{ display: inline-block; width:600px; margin-right: 10px; height: 630px; vertical-align: top; }
-.multi-col-right{ display: inline-block; width:280px; height: 430px; vertical-align: top; }
+.multi-col-right{ display: inline-block; width:380px; height: 430px; vertical-align: top; }
 
 .code{ font-family: monospace; font-weight:bold; font-size: 1.2em; }
     
@@ -38,7 +38,7 @@ body { font-family: 'Carme', verdana, arial, helvetica, sans-serif; font-size: 0
 	<body>
 <script type="text/javascript">
 jQuery(function() {
-	jQuery( "#tabs" ).tabs({ selected: 0 }).css('height','660px');
+	jQuery( "#tabs" ).tabs({ selected: 0 }).css('height','700px');
 	jQuery( "#tabs" ).tabs({
 		ajaxOptions: {
 			error: function( xhr, status, index, anchor ) {
@@ -139,7 +139,7 @@ function refreshSrc(name,src){
 							great for creating a  set of places with a specific category, such as "Shopping" 
 							or a travel map.
 						</p>
-						<script src="https://gist.github.com/2393775.js" type="text/javascript"></script>
+						<script src="https://gist.github.com/2394637.js?file=multiplace_widget_basics.js"></script>
 					</div>
 				</div>
 				<div id="tabs-46a5" style="display:inline;">
@@ -278,7 +278,13 @@ function refreshSrc(name,src){
 						<p>
 							Placehound cloud search will automatically populate a multimap with a search from
 							our 16 million point of interest database. Want to see Pizza in New York City? It's as
-							easy as the search term, location and radius for searching.				
+							easy as the search term, location and radius for searching. Start by including the 
+							search command in your header. 				
+						</p>
+						<script src="https://gist.github.com/2394637.js?file=geodb_search_include.html"></script>
+						<p>
+							You will then make your MultiPlace Widget an observer to the search, any search that
+							commands (even custom ones) that implements this pattern can be used.				
 						</p>
 						<script src="https://gist.github.com/2394637.js?file=placehound_multi_search.js"></script>
 						<p>
@@ -288,7 +294,7 @@ function refreshSrc(name,src){
 					</div>
 				</div>
 			</div>
-			<div style="color:white">Version 1.1.4 SNAPSHOT welocally places developer</div> 
+			<div style="color:white">Version 1.1.4 welocally places developer</div> 
 		</div><!-- End demo -->
 	</body>
 </html>
