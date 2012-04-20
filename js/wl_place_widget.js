@@ -83,14 +83,14 @@ WELOCALLY_PlaceWidget.prototype.makeWrapper = function() {
 	this.wrapper = jQuery('<div></div>');
 	jQuery(this.wrapper).css('display','none');			
 	jQuery(this.wrapper).attr('class','welocally_place_widget');
-	jQuery(this.wrapper).attr('id','welocally_place_widget_'+this.cfg.id);
+	jQuery(this.wrapper).attr('id','welocally_place_widget_'+_instance.cfg.id);
 	
 	
 	//google maps does not like jquery instances
 	this.map_canvas = document.createElement('DIV');
 	jQuery(this.map_canvas).css('display','none');	
     jQuery(this.map_canvas).attr('class','wl_places_place_map_canvas');
-	jQuery(this.map_canvas).attr("id","wl_place_map_canvas_widget_"+cfg.id);
+	jQuery(this.map_canvas).attr("id","wl_place_map_canvas_widget_"+_instance.cfg.id);
 		
 
 	return this.wrapper;

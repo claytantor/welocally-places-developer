@@ -427,7 +427,6 @@ WELOCALLY_PlacesMultiWidget.prototype.selectedItemHandler = function(event, ui) 
 	
 	if(this.nodeName=='OL'){
 		_instance = event.data.instance;
-		//jQuery(_instance.selectedSection).empty();
 		index = ui.selected.id.replace("wl_places_mutli_selectable_","");
 		marker = _instance.placeMarkers[index];		
 		_instance.selectedPlace = 
@@ -437,7 +436,6 @@ WELOCALLY_PlacesMultiWidget.prototype.selectedItemHandler = function(event, ui) 
 		_instance = this.instance;
 		marker = this;
 		index = marker.index;
-		//jQuery(_instance.selectedSection).empty();
 		jQuery('#wl_places_mutli_selectable_'+_instance.selectedMarkerIndex).removeClass('ui-selected');
 		
 		jQuery('#wl_places_mutli_selectable_'+index).addClass('ui-selected');
@@ -696,10 +694,10 @@ WELOCALLY_PlacesMultiWidget.prototype.getSelectedArea = function (){
 	return _instance.selectedSection;
 };
 
-//same as selected for this widget when being observer
+//use map status area
 WELOCALLY_PlacesMultiWidget.prototype.getStatusArea = function (){
 	var _instance = this;
-	return _instance.selectedSection;
+	return _instance.mapStatus;
 };
 
 
