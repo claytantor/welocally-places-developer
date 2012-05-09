@@ -10,8 +10,7 @@ function WELOCALLY_PlaceWidget (cfg) {
 	this.map_canvas;
 	this.map;
 	this.placehoundPath;
-	this.imagePath;
-	
+	this.imagePath;	
 	
 	this.init = function() {
 		
@@ -47,6 +46,11 @@ WELOCALLY_PlaceWidget.prototype.initCfg = function(cfg) {
 		cfg.endpoint = 'https://api.welocally.com';
 	}
 	
+	// hostname (optional) - the name of the host to use
+	if (!cfg.requestPath) {
+		cfg.requestPath = '/geodb/place/1_0/';
+	}
+	
 	if (!cfg.imagePath) {
 		cfg.imagePath = 'http://placehound.com/images/marker_all_base.png';
 	}
@@ -75,15 +79,19 @@ WELOCALLY_PlaceWidget.prototype.initCfg = function(cfg) {
 };
 
 
-WELOCALLY_PlaceWidget.prototype.makeWrapper = function() {
+WELOCALLY_PlaceWidget.prototype.makeWrapper = function() { 
 	// Build Widget
 	var _instance = this;
 	
 	// Build Widget
-	this.wrapper = jQuery('<div></div>');
-	jQuery(this.wrapper).css('display','none');			
-	jQuery(this.wrapper).attr('class','welocally_place_widget');
-	jQuery(this.wrapper).attr('id','welocally_place_widget_'+_instance.cfg.id);
+	var wrapper = jQuery('<div></div>');
+	jQuery(wrapper).css('display','none');			
+	jQuery(wrapper).attr('class','welocally_place_widget');
+	jQuery(wrapper).attr('id','welocally_place_widget_'+_instance.cfg.id);
+	
+	//status area
+	this.statusArea = jQuery('<div class="wl_place_status"></div>');
+	jQuery(wrapper).append(this.statusArea);
 	
 	
 	//google maps does not like jquery instances
@@ -91,31 +99,18 @@ WELOCALLY_PlaceWidget.prototype.makeWrapper = function() {
 	jQuery(this.map_canvas).css('display','none');	
     jQuery(this.map_canvas).attr('class','wl_places_place_map_canvas');
 	jQuery(this.map_canvas).attr("id","wl_place_map_canvas_widget_"+_instance.cfg.id);
-		
-
+	jQuery(wrapper).append(this.map_canvas);
+	
+	
+	this.wrapper = wrapper; 
+	
 	return this.wrapper;
 	
 };
 
-//WELOCALLY_PlaceWidget.prototype.setWrapper = function(cfg, wrapper) {
-//	this.cfg = cfg;
-//	this.wrapper = wrapper;
-//	return this;
-//};
 
-/*WELOCALLY_PlaceWidget.prototype.loadWithWrapper = function(cfg, map_canvas, wrapper) {
-	this.cfg = cfg;
-	this.wrapper = wrapper;
-	jQuery(this.wrapper).html(map_canvas);
-	this.load(map_canvas);
-	return this;
-};*/
 
-WELOCALLY_PlaceWidget.prototype.loadRemote = function() {
-	this.load(this.map_canvas);
-};
-
-WELOCALLY_PlaceWidget.prototype.loadLocal = function(placeJson) {
+WELOCALLY_PlaceWidget.prototype.load = function(placeJson) {
 	var _instance = this;
 	_instance.map = _instance.initMapForPlace(placeJson,_instance.map_canvas);
 	_instance.show(placeJson);
@@ -132,37 +127,57 @@ WELOCALLY_PlaceWidget.prototype.loadLocal = function(placeJson) {
 	
 };
 
-WELOCALLY_PlaceWidget.prototype.load = function(map_canvas) {
-	var _instance = this;
-	
-	if(WELOCALLY.util.startsWith(_instance.cfg.id,"WL_")){			
-		var surl = _instance.cfg.endpoint +
-		'/geodb/place/1_0/'+_instance.cfg.id+'.json?callback=?';
-		
-		
-		jQuery.ajax({
-			url: surl,
-			dataType: "json",
-			success: function(data) {
-				//_instance.map = _instance.initMapForPlace(data[0],map_canvas);
-				_instance.show(data[0]);
-				_instance.setMapEvents(_instance.map);
-				
-				var latlng = new google.maps.LatLng(
-						data[0].geometry.coordinates[1], 
-						data[0].geometry.coordinates[0]);
-				
-				//forced to refresh
-				setTimeout(function () {
-			     	_instance.refreshMap(latlng);
-			 	}, 200);
-				
-			},
-			error: function() {
-			}
-		});
-	}		
-};	
+//WELOCALLY_PlaceWidget.prototype.load = function(map_canvas) {
+//	var _instance = this;
+//	
+//	if(WELOCALLY.util.startsWith(_instance.cfg.id,"WL_")){			
+//		var surl = _instance.cfg.endpoint +
+//			_instance.cfg.requestPath+_instance.cfg.id+'.json?callback=?';
+//		
+//		
+//		_instance.jqxhr = jQuery.ajax({
+//			url: surl,
+//			dataType: "json",
+//			beforeSend: function(jqXHR){
+//				_instance.jqxhr = jqXHR;
+//				_instance.jqxhr.setRequestHeader("key", _instance.cfg.key);
+//				_instance.jqxhr.setRequestHeader("token", _instance.cfg.token);
+//		  	},
+//			success: function(data) {
+//				if(data != null && data.errors != null) {
+//					var errorsArea = jQuery('<div></div>');
+//					WELOCALLY.ui.setStatus(errorsArea, WELOCALLY.util.getErrorString(data.errors),'wl_error');
+//					jQuery(_instance.wrapper).attr('class','');
+//					jQuery(_instance.wrapper).html(errorsArea);
+//					jQuery(_instance.wrapper).show();
+//					
+//				} else if(data != null && data.length>0){	
+//					_instance.show(data[0]);
+//					_instance.setMapEvents(_instance.map);
+//					
+//					var latlng = new google.maps.LatLng(
+//							data[0].geometry.coordinates[1], 
+//							data[0].geometry.coordinates[0]);
+//					
+//					//forced to refresh
+//					setTimeout(function () {
+//				     	_instance.refreshMap(latlng);
+//				 	}, 200);
+//				} else {
+//					var errorsArea = jQuery('<div></div>');
+//					WELOCALLY.ui.setStatus(errorsArea, 'No data was returned.','wl_update');
+//					jQuery(_instance.wrapper).attr('class','');
+//					jQuery(_instance.wrapper).html(errorsArea);
+//					jQuery(_instance.wrapper).show();
+//				}
+//				
+//				
+//			},
+//			error: function() {
+//			}
+//		});
+//	}		
+//};	
 
 
 WELOCALLY_PlaceWidget.prototype.initMapForPlace = function(place, map_canvas) {
@@ -371,4 +386,11 @@ WELOCALLY_PlaceWidget.prototype.refreshMap = function(searchLocation) {
 		
 	});
 	
+};
+
+
+//use map status area
+WELOCALLY_PlaceWidget.prototype.getStatusArea = function (){
+	var _instance = this;
+	return _instance.statusArea;
 };

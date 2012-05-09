@@ -700,7 +700,19 @@ WELOCALLY_PlacesMultiWidget.prototype.getStatusArea = function (){
 	return _instance.mapStatus;
 };
 
+WELOCALLY_PlacesMultiWidget.prototype.triggerResize = function(){
+	
+	var _instance = this;
+	
+	google.maps.event.trigger(_instance.map, 'resize');
+		
+};
 
+//for place selectors
+WELOCALLY_PlacesMultiWidget.prototype.show = function(selectedPlace) {	
+	jQuery( this.results ).trigger( "observerselected", {instance: this, type:observer, place:selectedPlace}, this.selectedItemHandler);
+	
+};
 
 
 

@@ -1,4 +1,4 @@
-README
+README v 1.1.7
 =================
 
 Basic documentation include in examples/demo.html
@@ -56,30 +56,32 @@ var placeWidget =
     .init();
 
 //load loacally with local place
-placeWidget.loadLocal(places[0]);
+placeWidget.load(places[0]);
 
 
 Multi Places Widget
 
 The multi places widget will automatically scale to the correct view bounds to include all the place markers. When a user selects a specific place marker details like website or phone number and driving directions become visible and the map will center. This map is great for creating a set of places with a specific category, such as "Shopping" or a travel map.
 
-//used for the place display when selected
+//used for the place display when selected (observed)
 var placeSelected = new WELOCALLY_PlaceWidget({}).init();
 
 //config the widget, use the places array
 var cfg = { 
-	id:'multi_map_1',
-	imagePath: 'images/marker_all_base.png',
-   	observers:[placeSelected],
-	places: places
-};  
+ id:'multi_map_1',
+ imagePath: 'images/marker_all_base.png',
+ observers:[placeSelected],
+ places: places
+};
 
-//instantiate it
+//it both objects 
+placeSelected.initCfg(cfg);
 var placesMulti = 
-  new WELOCALLY_PlacesMultiWidget(cfg).init(); 
+	  new WELOCALLY_PlacesMultiWidget(cfg)
+  		.init(); 
 
-//set the place viewer when selected
-placeSelected.setWrapper(
-	cfg, jQuery(placesMulti._selectedSection));
+//setup the selected area, display selected
+placesMulti.getSelectedArea().append(
+  placeSelected.makeWrapper());
 
 

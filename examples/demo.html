@@ -19,17 +19,17 @@
 body { font-family: 'Carme', verdana, arial, helvetica, sans-serif; font-size: 0.8em; background-color: #aaa; }
 .ui-widget{ font-family: 'Carme', verdana, arial, helvetica, sans-serif; font-size: 0.8em; } 
 
-.document-col{ display: inline-block; width:400px; margin-right: 10px; height: 630px; vertical-align: top; }
-.document-col-half{ display: inline-block; width:380px;  margin:10px; height: 330px; vertical-align: top; }
-.document-2col{ display: inline-block; width:800px; margin-right: 10px; height: 330px; vertical-align: top; }
+.document-col{ display: inline-block; width:400px; margin-right: 10px;  vertical-align: top; }
+.document-col-half{ display: inline-block; width:380px;  margin:10px; vertical-align: top; }
+.document-2col{ display: inline-block; width:800px; margin-right: 10px;  vertical-align: top; }
 
-.place-iframe{ width:440px; height: 510px; border: 0px; }
+.place-iframe{ width: 100%; height: 450px; border: 0px; }
 .places-iframe {width:610px; height: 510px; border: 0px;}
-.place-col-left{ display: inline-block; width:420px; margin-right: 10px; height: 630px; vertical-align: top; }
-.place-col-right{ display: inline-block; width:360px; margin-right: 10px; height: 630px; vertical-align: top; }
+.place-col-left{ display: inline-block; width:45%; margin-right: 10px; vertical-align: top; }
+.place-col-right{ display: inline-block; width:40%; margin-right: 10px;  vertical-align: top; }
 
-.multi-col-left{ display: inline-block; width:600px; margin-right: 10px; height: 630px; vertical-align: top; }
-.multi-col-right{ display: inline-block; width:380px; height: 430px; vertical-align: top; }
+.multi-col-left{ display: inline-block; width:53%; margin-right: 10px; vertical-align: top; }
+.multi-col-right{ display: inline-block; width:40%; vertical-align: top; }
 
 .code{ font-family: monospace; font-weight:bold; font-size: 1.2em; }
     
@@ -38,7 +38,7 @@ body { font-family: 'Carme', verdana, arial, helvetica, sans-serif; font-size: 0
 	<body>
 <script type="text/javascript">
 jQuery(function() {
-	jQuery( "#tabs" ).tabs({ selected: 0 }).css('height','700px');
+	jQuery( "#tabs" ).tabs({ selected: 0 });
 	jQuery( "#tabs" ).tabs({
 		ajaxOptions: {
 			error: function( xhr, status, index, anchor ) {
@@ -95,10 +95,10 @@ function refreshSrc(name,src){
 						<a href="#tabs-5ae1">Styling Multi Widget</a>
 					</li>
 					<li>
-						<a href="#tabs-6ae0">Placehound Place</a>
+						<a href="#tabs-6ae0">Google Docs Place</a>
 					</li>
 					<li>
-						<a href="#tabs-6ae1">Placehound Places</a>
+						<a href="#tabs-6ae1">Google Docs Places</a>
 					</li>
 				</ul>
 				<div id="tabs-4908" style="display:inline;">
@@ -199,7 +199,7 @@ function refreshSrc(name,src){
 							<li>Google Maps V3</li>
 							<li>Google Web Fonts (Optional)</li>								
 						</ul>
-						<script src="https://gist.github.com/2394275.js"> </script>
+						<script src="https://gist.github.com/2394637.js?file=header_include.html"></script>
 						<h3>Styling For IE</h3>
 						<p>
 							We support Chome 18, Firefox 5,6,7 and Safari 5.1. While we do not reccomend supporting Internet Explorer, we understand it is a necessity in some situations
@@ -253,48 +253,63 @@ function refreshSrc(name,src){
 				</div>
 				<div id="tabs-6ae0">
 					<div class="place-col-left">
-						<h3>Placehound Cloud Place (Developer Accounts Only)</h3>
-						<iframe id="placehound-place-iframe" class="place-iframe" src="placehound/place.html"></iframe>
+						<h3>Googe Docs Cloud Place</h3>
+						<p>
+							Googe Apps Cloud Places are cloud enabled places that can fetched remotely from your google apps 
+							spreadsheet. Just create a single worksheet spreadsheet with your places and all your sites will 
+							show the same information. Use google docs as your cloud places database! 
+						</p>			
+						<iframe id="google-place-iframe" class="place-iframe" src="sky/place.html"></iframe>					
 					</div>
 					<div class="place-col-right">
 						<p>
-							Placehound places are cloud enabled places that can fetched remotely from our 16 million point
-							of interest database, and are intended only for registered developers. Welocally is creating a 
-							cloud database that can be used to manage, maintain and search places using our services apis. 
-						</p>
-						<script src="https://gist.github.com/2394637.js?file=placehound_place.js"></script>
+							To make your google docs spreadsheet the cloud database for you places you must publish your
+							spreadsheet publically, and publish the places you want available as a single worksheet based
+							spreadsheet. Make sure that updates are made saved so all maps pointing to this spreadsheet will
+							be automatically updated. 
+						</p>	
+						<div><img src="sky/images/google_publish.png"/></div>
 						<p>
-							If you are interested in becoming a Welocally Placehound Cloud Database user, or have purchased a Developer 
-							Account please <a target="_new" href="http://welocally.com/?page_id=139">contact us</a>.
-						</p>				
-					</div>					
+							Once you have published your spreadsheet it now acts as the cloud database for all your places, for a 
+							single place card just specify which row you want shown.
+						</p>						
+						<script src="https://gist.github.com/2394637.js?file=google_docs_place.js"></script>
+						<p>
+							We have included a CSV file that you should be able to use as a template for your own google docs
+							places spreadsheet. <a href="sky/nyc_tailors.csv">Download it</a> and use it to put your own places in the cloud.
+						</p>
+										
+					</div>		
+					<div>
+						<p>This spreadsheet has been shared publicly on Google Docs. Want to see it? <a target="_new" href="https://docs.google.com/a/sightlyinc.com/spreadsheet/ccc?key=0Avb_MOw4lfVndDh2S0ZhTFdYa0Y3Qk9uNEhHZnFYVUE#gid=0">click here.</a></p>
+						<iframe width="100%" height="400px" frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0Avb_MOw4lfVndDh2S0ZhTFdYa0Y3Qk9uNEhHZnFYVUE&single=true&gid=0&output=html&widget=true'></iframe>
+					</div>
+			
 				</div>
 				<div id="tabs-6ae1">
 					<div class="multi-col-left">
-						<h3>Placehound Cloud Places (Developer Accounts Only)</h3>
-						<iframe id="placehound-places-iframe" class="places-iframe" src="placehound/places.html"></iframe>
+						<h3>Google Docs Cloud Places</h3>
+						<iframe id="google-places-iframe" class="places-iframe" src="sky/places.html"></iframe>
 					</div>
 					<div class="multi-col-right">
 						<p>
-							Placehound cloud search will automatically populate a multimap with a search from
-							our 16 million point of interest database. Want to see Pizza in New York City? It's as
-							easy as the search term, location and radius for searching. Start by including the 
-							search command in your header. 				
+							The same approach that is used to load a single place in the previous example is used to create a multi place map, except
+							that instead of just loading a single place the multi place map will attempt to load all places in the spreadsheet.			
 						</p>
-						<script src="https://gist.github.com/2394637.js?file=geodb_search_include.html"></script>
+						<script src="https://gist.github.com/2394637.js?file=google_docs_places.js"></script>
 						<p>
-							You will then make your MultiPlace Widget an observer to the search, any search that
-							commands (even custom ones) that implements this pattern can be used.				
-						</p>
-						<script src="https://gist.github.com/2394637.js?file=placehound_multi_search.js"></script>
-						<p>
-							If you are interested in becoming a Welocally Placehound Cloud Database user, or have purchased a Developer 
-							Account please <a target="_new" href="http://welocally.com/?page_id=139">contact us</a>.
+							Using the cloud can be helpful for syndicating and managing places you may use on multiple sites from one data source, without databases or complicated APIs. We also have a 
+							simple cloud service for larger applications we are working on now. If you are interested in learning how our cloud places products can help you with your next location
+							based application, please <a target="_new" href="http://welocally.com/?page_id=139">contact us</a>.
 						</p>						
+					</div>
+					<div>
+						<p>This spreadsheet has been shared publicly on Google Docs. Want to see it? <a target="_new" href="https://docs.google.com/a/sightlyinc.com/spreadsheet/ccc?key=0Avb_MOw4lfVndDh2S0ZhTFdYa0Y3Qk9uNEhHZnFYVUE#gid=0">click here.</a></p>
+						<iframe width="100%" height="400px" frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0Avb_MOw4lfVndDh2S0ZhTFdYa0Y3Qk9uNEhHZnFYVUE&single=true&gid=0&output=html&widget=true'></iframe>
 					</div>
 				</div>
 			</div>
-			<div style="color:white">Version 1.1.5 welocally places developer</div> 
+			<div style="color:white">Version 1.1.7 welocally places developer</div> 
 		</div><!-- End demo -->
 	</body>
 </html>

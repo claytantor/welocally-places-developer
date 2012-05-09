@@ -1,0 +1,191 @@
+
+.wl_places_place_wrapper{
+}
+
+
+/* overall style for the widget */
+.welocally_place_widget { 
+	font-family: 'Varela', verdana, arial, helvetica, sans-serif;
+	color: #4A8D94;
+	font-size: 0.8em;
+	margin-bottom: 5px; 
+	width: 98%; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px; 
+   	background: #E4F0F5;
+   	border:1px solid #4A8D94;
+   	padding:5px; }
+   	
+.wl_places_place {  
+	padding: 10px;
+	margin-bottom:10px; border: 1px solid #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px; 
+   	background: #fafafa;
+}
+
+.wl_places_place_tag {  width:100%; padding: 4px; }
+.wl_places_place_tag input{ 
+	margin-bottom: 5px;
+	border: 1px solid #9c9c9c;
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;
+   	color: #7d7d7d;
+   	font-weight:bold;
+   	text-align:left;
+	width:95%; 
+	font-weight:bold;
+	font-size: 1.0em;
+	font-family: Fixed, monospace;	
+}
+
+.wl_places_place_script { width:100%; padding: 4px; display:none }
+.wl_places_place_script textarea{ 
+	border: 1px solid #9c9c9c;
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;
+   	color: #4A8D94;
+   	font-weight:bold;
+   	text-align:left;
+	width:95%; 
+	height:90px;
+	font-weight:bold;
+	font-size: 0.8em;
+	font-family: Fixed, monospace;  }
+
+.wl_places_place_name { 
+	color: #44839E;
+	font-family: 'Comfortaa', verdana, arial, helvetica, sans-serif;
+	font-size: 1.4em;
+	font-weight: 700;}
+	
+.wl_places_place_adress {
+	font-size: 1.0em;
+	font-weight:bold;
+	color: #4A8D94; 
+}
+
+.wl_places_place_phone {
+	color: #4A8D94;
+}
+	
+	
+/* where you styling of links */	
+.wl_places_place_web_link { 
+	background: url(../images/sky_web.png);
+	text-align: left;  
+	display: inline-block; 
+	width:70px; height:22px; 
+	margin-right: 15px; }
+	
+.wl_places_place_web_link a { 
+    color: #89A3AB; 
+    margin-left: 22px; 
+    position: relative;
+    top: 5px; }
+	
+.wl_places_place_web_link a:hover { 
+	color: #E88A38;
+	}
+	
+
+	
+.wl_places_place_driving_link { 
+	background: url(../images/sky_driving.png);
+	text-align: left; 
+	display: inline-block; 
+	width:70px; height:26px; 
+	margin-right: 15px; }
+
+.wl_places_place_driving_link a { 
+	color: #89A3AB;
+	margin-left: 22px; 
+	position: relative;
+	top: 5px;
+	}
+
+.wl_places_place_driving_link a:hover { 
+	color: #E88A38;
+	}
+	
+		
+.wl_places_place_embed_link { 
+	background: url(../images/sky_share.png);
+	text-align: left; 
+	display: inline-block; 
+	width:70px; height:26px; 
+	margin-right: 15px; }	
+	
+.wl_places_place_embed_link a { 
+	color: #89A3AB;
+	margin-left: 22px; 
+	position: relative;
+	top: 5px;
+}
+
+.wl_places_place_driving_link a:hover { 
+	color: #E88A38;
+	}
+	
+	
+.wl_places_place_share_link { 
+	background: url(../images/sky_share.png);
+	text-align: left; 
+	display: inline-block; 
+	width:70px; height:26px; 
+	margin-right: 15px; }	
+	
+.wl_places_place_share_link a { 
+	color: #89A3AB;
+	margin-left: 22px; 
+	position: relative;
+	top: 5px;
+	}
+
+.wl_places_place_share_link a:hover { 
+	color: #E88A38;
+	}
+	
+	
+.wl_places_place_post_link { 
+	background: url(../images/link_post_bg.png);
+	text-align: left; 
+	display: inline-block; 
+	width:70px; height:26px; 
+	margin-right: 15px; }	
+	
+.wl_places_place_post_link a { 
+	color: #89A3AB;
+	margin-left: 22px; 
+	position: relative;
+	top: 5px;
+	}
+	
+.wl_places_place_post_link a:hover { 
+	color: #E88A38;
+	}
+	
+/* where you set the map size */
+.wl_places_place_map_canvas {height: 320px; width: 100%}
+
+.wl_places_place_map_canvas img {
+	max-width: none;
+}
+
+
+.wl_places_place_field { 
+	font-size: 1.0em; 
+	font-family: Fixed, monospace; font-weight:bold; text-align:center;
+	margin-top:5px;
+	border: 1px #aaaaaa; 
+	-webkit-border-radius: 4px;
+   	-moz-border-radius: 4px;
+   	border-radius: 4px;
+   	padding: 4px;
+   	color: #7d7d7d;  }
