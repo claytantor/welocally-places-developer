@@ -1,5 +1,17 @@
 /*
-	copyright 2012 clay graham. NO WARRANTIES PROVIDED
+	Copyright 2012 clay graham, welocally & RateCred Inc.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
 */
 if (!window.WELOCALLY) {
     window.WELOCALLY = {
@@ -75,6 +87,16 @@ if (!window.WELOCALLY) {
 				}
 				return str.join("&");
 			},
+    		hashCode: function(val){
+    		    var hash = 0;
+    		    if (val.length == 0) return hash;
+    		    for (i = 0; i < val.length; i++) {
+    		        char = val.charCodeAt(i);
+    		        hash = ((hash<<5)-hash)+char;
+    		        hash = hash & hash; 
+    		    }
+    		    return hash;
+    		},				
 			trim: function (str) { 
 	    			return WELOCALLY.util.ltrim(WELOCALLY.util.rtrim(str), ' '); 
 			}, 
@@ -148,7 +170,13 @@ if (!window.WELOCALLY) {
 			},
 			startsWith: function(sourceString, startsWith) {
 				  return sourceString.indexOf(startsWith) == 0;
-			},
+			},			
+			urlify: function(text) {
+			    var urlRegex = /(https?:\/\/[^\s]+)/g;
+			    return text.replace(urlRegex, function(url) {
+			        return '<a href="' + url + '">' + url + '</a>';
+			    });
+			},			
 			getParameter: function ( queryString, parameterName ) {
 				   // Add "=" to the parameter name (i.e. parameterName=value)
 				   var parameterName = parameterName + "=";
@@ -1342,59 +1370,6 @@ WELOCALLY_PlaceWidget.prototype.load = function(placeJson) {
 	
 };
 
-//WELOCALLY_PlaceWidget.prototype.load = function(map_canvas) {
-//	var _instance = this;
-//	
-//	if(WELOCALLY.util.startsWith(_instance.cfg.id,"WL_")){			
-//		var surl = _instance.cfg.endpoint +
-//			_instance.cfg.requestPath+_instance.cfg.id+'.json?callback=?';
-//		
-//		
-//		_instance.jqxhr = jQuery.ajax({
-//			url: surl,
-//			dataType: "json",
-//			beforeSend: function(jqXHR){
-//				_instance.jqxhr = jqXHR;
-//				_instance.jqxhr.setRequestHeader("key", _instance.cfg.key);
-//				_instance.jqxhr.setRequestHeader("token", _instance.cfg.token);
-//		  	},
-//			success: function(data) {
-//				if(data != null && data.errors != null) {
-//					var errorsArea = jQuery('<div></div>');
-//					WELOCALLY.ui.setStatus(errorsArea, WELOCALLY.util.getErrorString(data.errors),'wl_error');
-//					jQuery(_instance.wrapper).attr('class','');
-//					jQuery(_instance.wrapper).html(errorsArea);
-//					jQuery(_instance.wrapper).show();
-//					
-//				} else if(data != null && data.length>0){	
-//					_instance.show(data[0]);
-//					_instance.setMapEvents(_instance.map);
-//					
-//					var latlng = new google.maps.LatLng(
-//							data[0].geometry.coordinates[1], 
-//							data[0].geometry.coordinates[0]);
-//					
-//					//forced to refresh
-//					setTimeout(function () {
-//				     	_instance.refreshMap(latlng);
-//				 	}, 200);
-//				} else {
-//					var errorsArea = jQuery('<div></div>');
-//					WELOCALLY.ui.setStatus(errorsArea, 'No data was returned.','wl_update');
-//					jQuery(_instance.wrapper).attr('class','');
-//					jQuery(_instance.wrapper).html(errorsArea);
-//					jQuery(_instance.wrapper).show();
-//				}
-//				
-//				
-//			},
-//			error: function() {
-//			}
-//		});
-//	}		
-//};	
-
-
 WELOCALLY_PlaceWidget.prototype.initMapForPlace = function(place, map_canvas) {
 	
 	var _instance = this;
@@ -1536,46 +1511,32 @@ WELOCALLY_PlaceWidget.prototype.makePlaceContent = function(selectedPlace, cfg) 
 				qVal+'" target="_new">Directions</a></div>');		
 	}
 	
-	//embed wrapper
-	var embed = jQuery('<div id="wl_place_embed" class="wl_place_embed"></div>');
-	if(!cfg.showShare){
-		jQuery(embed).hide();
-	}
-	
-	//tag
-	//we wont make a permalink or tag unless an id is available for the place
-	if(selectedPlace._id)
-	{
-		//share link
-		var shareToggle = jQuery('<div class="wl_places_place_share_link"></div>');
-		var shareLink = jQuery('<a href="#" target="_new">Share</a>');
-		jQuery(shareLink).click(function() {
-			jQuery(embed).toggle();
-			return false;
-		});
-		jQuery(shareToggle).append(shareLink);
-		jQuery(links).append(shareToggle);
-		
-		var wlSelectedTagArea = jQuery('<div id="wl_place_widget_tag" class="wl_places_place_tag"></div>');	
-		var title = jQuery('<div class="wl_place_title">Use this tag to share with <a href="http://welocally.com/?page_id=2" target="_new">Welocally Places</a> for <a href="http://wordpress.org/extend/plugins/welocally-places/" target="_new">WordPress</a></div>');
-		jQuery(wlSelectedTagArea).append(title);
-		
-		//the tag
-		var tag = '[welocally id="'+selectedPlace._id+'" /]';
-		var inputAreaTag = jQuery('<input/>');
-		jQuery(inputAreaTag).val(tag);	
-		jQuery(wlSelectedTagArea).append(inputAreaTag);
-		
-		jQuery(embed).append(wlSelectedTagArea); 
-		
-		//placehound permalink
-		jQuery(embed).append('<div class="wl_place_title"><a target="_new" href="'+_instance.cfg.placehoundPath+'/place.html?id='+selectedPlace._id+'">Place Permalink</a></div>');		
-		
-		jQuery(placeWrapper).append(embed); 
-
-	}
-	
 	jQuery(placeWrapper).append(links);
+	
+	//userdata wrapper
+	if(selectedPlace.properties.userdata != null && selectedPlace.properties.userdata.length>0){
+		var embed = jQuery('<div id="wl_place_userdata" class="wl_place_userdata"></div>');
+
+		jQuery.each(selectedPlace.properties.userdata, function(i,item){
+			if(/^http:\/\//.test(item.value)) {
+				jQuery(embed).append('<div class="wl_place_userdata_item"><a href="'+item.value+'">'+item.name+'</a></div>');
+			} else if(/^https:\/\//.test(item.value)) {
+				jQuery(embed).append('<div class="wl_place_userdata_item"><a href="'+item.value+'">'+item.name+'</a></div>');
+			} else if(/^mailto:/.test(item.value)) {
+				jQuery(embed).append('<div class="wl_place_userdata_item"><a href="'+item.value+'">'+item.name+'</a></div>');
+			} else if(/^tel:/.test(item.value)) {
+				jQuery(embed).append('<div class="wl_place_userdata_item"><a href="'+item.value+'">'+item.name+'</a></div>');
+			} else {
+				jQuery(embed).append('<div class="wl_place_userdata_item">'+item.name+': '+item.value+'</div>');
+			}
+			
+		});
+		
+		jQuery(placeWrapper).append(embed);
+	}
+			
+		
+	
 		
 	
 	return placeWrapper;
@@ -1985,7 +1946,7 @@ WELOCALLY_PlacesMultiWidget.prototype.makeItemContents = function (item, i, show
 	jQuery(wrapper)
 		.append(jQuery('<div class="selectable_address">'+
 			item.properties.address+' '+item.properties.city+' '+item.properties.province+'</div>'));
-	if(item.distance){
+	if(item.distance && !_instance.cfg.hideDistance ){
 		jQuery(wrapper)
 		.append(jQuery('<div class="selectable_distance">'+
 				item.distance.toFixed(2)+'km </div>'));

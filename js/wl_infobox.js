@@ -1,11 +1,25 @@
+
 /*
-	Derived from Google Utility Library Infobox
-	Code license
-	Apache License 2.0
-	http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/docs/reference.html
+	Copyright 2012 clay graham, welocally & RateCred Inc.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+   Derived from Google Utility Library Infobox
+   Code license
+   Apache License 2.0
+   http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/docs/reference.html
 	
 */
-
 /**
  * @name WELOCALLY_InfoBox cfg
  * @class This class represents the optional parameter passed to the {@link InfoBox} constructor.

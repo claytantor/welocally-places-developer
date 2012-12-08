@@ -41,7 +41,7 @@
    	color: #444444;
 }
 
-.wl_clear {
+.wl_clear_both {
 	clear:both;
 }
 
@@ -93,8 +93,6 @@
     float:left;
 }
  
-.clear {clear:both}
-
 
 .wl_category_container_tag_empty{ display: none }
 

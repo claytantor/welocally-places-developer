@@ -1,4 +1,4 @@
-README v 1.1.7
+README v 1.1.8
 =================
 
 Basic documentation include in examples/demo.html
@@ -9,6 +9,7 @@ Welocally Places For Developers is a set of jQuery based javascript widgets that
 
 It is founded around the data of places. Simply put, a place is all the relevant facts about a real world location, like its name, location, phone number, and website. This data is then used to set the map location and create place cards or marker maps.
 
+```javascript
 //places are an array of JSON objects
 var places = [
   {				                       
@@ -40,6 +41,7 @@ var places = [
       }
   }
 ];
+```
 
 Our primary goal is to combine a number of aspects of the Google Maps API into a single easy to use set of components, helping developers build beautiful and unique hyper-local websites with ease.
 
